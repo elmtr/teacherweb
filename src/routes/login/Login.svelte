@@ -3,9 +3,9 @@
   import axios from 'axios'
   import {config} from '../../axiosConfig'
   import {push} from 'svelte-spa-router'
+  
   let phone
   let password
-
 
   async function submit() {
     try {

@@ -12,6 +12,7 @@ import Student from './routes/teacher/Student.svelte'
 import AddMark from './routes/add/AddMark.svelte'
 import AddDraftMark from './routes/add/AddDraftMark.svelte'
 import ModifyDraftMark from './routes/add/ModifyDraftMark.svelte'
+import DefinitivateDraftMark from './routes/add/DefinitivateDraftMark.svelte'
 import AddTruancy from './routes/add/AddTruancy.svelte'
 import MotivateTruancy from './routes/add/MotivateTruancy.svelte'
 
@@ -33,6 +34,8 @@ export default {
     
     '/teacher/:subjectID/:studentID/add/truancy': AddTruancy,
     '/teacher/:subjectID/:studentID/modify/:id': ModifyDraftMark,
+    '/teacher/:subjectID/:studentID/definitivate/:id': DefinitivateDraftMark,
+
     '/teacher/:subjectID/:studentID/motivate/:id': MotivateTruancy,
 
     '/login': Login,

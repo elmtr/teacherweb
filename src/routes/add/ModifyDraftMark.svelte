@@ -3,9 +3,9 @@
   import axios from 'axios'
   import {tokenConfig} from '../../axiosConfig'
   import {token, draftMarks} from '../../stores'
-  import {push} from 'svelte-spa-router'
+  import {pop, push} from 'svelte-spa-router'
   import {writable} from 'svelte/store'
-  import { onMount } from 'svelte';
+  
   export let params = {}
 
   const draftMark = writable({})
@@ -22,7 +22,7 @@
         {"id": params.id, "value": Number(value), dateDay, dateMonth, "subjectID": params.subjectID, "studentID": params.studentID},
         tokenConfig($token)
       )
-      push(`/teacher/${params.subjectID}/${params.studentID}`)
+      pop()
     } catch(error) {
       console.log(error.response.data.message)
     }
@@ -55,20 +55,20 @@
       return $draftMarks
     }
   }
+
 </script>
 
 <main>
-
-    {#await loadDraftMarks() then draftMarks}
-      {#each draftMarks as draftMark}
-          {#if draftMark.id == params.id}
-            <input name="value" placeholder="value" type="text" bind:value={value}>
-            <input name="dateDay" placeholder="dateDay" type="text" bind:value={dateDay}>
-            <input name="dateMonth" placeholder="dateMonth" type="text" bind:value={dateMonth}>
-          {/if}
-      {/each}
-    {/await}
-    <br>
+  {#await loadDraftMarks() then draftMarks}
+    {#each draftMarks as draftMark}
+        {#if draftMark.id == params.id}
+          <input name="value" placeholder="value" type="text" bind:value={value}>
+          <input name="dateDay" placeholder="dateDay" type="text" bind:value={dateDay}>
+          <input name="dateMonth" placeholder="dateMonth" type="text" bind:value={dateMonth}>
+        {/if}
+    {/each}
+  {/await}
+  <br>
 
   <input type="submit" value="modify nota ciorna" on:click={submit}/>
 </main>

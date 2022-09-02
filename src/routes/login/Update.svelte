@@ -5,6 +5,7 @@
   import {push} from 'svelte-spa-router'
   import {token, info} from '../../stores'
   import {onMount} from 'svelte'
+
   let passcode
   let phone
   
@@ -23,9 +24,13 @@
         tokenConfig(localStorage.getItem("userToken"))
       )
       localStorage.setItem("userInfo", JSON.stringify(data.teacher))
-      localStorage.setItem("token", data.token)
       token.set(data.token)
       info.set(data.teacher)
+
+      // keep it logged in
+      localStorage.setItem("token", data.token)
+
+      
       push('/')
     } catch(error) {
       console.log(error.response.data.message)

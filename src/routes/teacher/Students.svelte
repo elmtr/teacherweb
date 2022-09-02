@@ -1,10 +1,11 @@
 <script>
+  
   import axios from 'axios';
-
-  import { config, tokenConfig } from '../../axiosConfig';
+  import { tokenConfig } from '../../axiosConfig';
   import {token} from '../../stores';
-  export let params = {}
   import {link} from 'svelte-spa-router';
+
+  export let params = {}
 
   async function loadStudents() {
         const {data} = await axios.get(
@@ -13,6 +14,7 @@
     )
     return data
   }
+
 </script>
 
 {#await loadStudents() then students}

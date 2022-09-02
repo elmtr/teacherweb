@@ -3,8 +3,8 @@
   import axios from 'axios'
   import {tokenConfig} from '../../axiosConfig'
   import {push} from 'svelte-spa-router'
+  
   let password
-
 
   async function submit() {
     try {

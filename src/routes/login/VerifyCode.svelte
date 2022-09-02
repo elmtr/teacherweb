@@ -3,8 +3,8 @@
   import axios from 'axios'
   import {config} from '../../axiosConfig'
   import {push} from 'svelte-spa-router'
-  let code
 
+  let code
 
   async function submit() {
     try {

@@ -1,4 +1,5 @@
 <script>
+	
 	import {token, info} from '../stores'
 	import {push, link} from 'svelte-spa-router'
 
@@ -7,11 +8,6 @@
 	}
 
 	let subjects = $info.subjects
-	// $: {
-	// 	subjects = $info.subjects
-	// 	console.log(subjects)
-	// }
-
 
 </script>
 

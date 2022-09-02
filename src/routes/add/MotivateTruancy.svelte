@@ -3,8 +3,8 @@
   import axios from 'axios'
   import {tokenConfig} from '../../axiosConfig'
   import {token, truancies} from '../../stores'
-  import {push} from 'svelte-spa-router'
-  import { onMount } from 'svelte';
+  import {pop} from 'svelte-spa-router'
+
   export let params = {}
 
   async function submit() {
@@ -14,7 +14,7 @@
         {},
         tokenConfig($token)
       )
-      push(`/teacher/${params.subjectID}/${params.studentID}`)
+      pop()
     } catch(error) {
       console.log(error.response.data.message)
     }
@@ -33,18 +33,18 @@
       return $truancies
     }
   }
+
 </script>
 
 <main>
-
-    {#await loadTruancies() then truancies}
-      {#each truancies as truancy}
-          {#if truancy.id == params.id}
-            {truancy.dateDay}.{truancy.dateMonth}
-          {/if}
-      {/each}
-    {/await}
-    <br>
+  {#await loadTruancies() then truancies}
+    {#each truancies as truancy}
+        {#if truancy.id == params.id}
+          {truancy.dateDay}.{truancy.dateMonth}
+        {/if}
+    {/each}
+  {/await}
+  <br>
 
   <input type="submit" value="motiveaza absenta" on:click={submit}/>
 </main>

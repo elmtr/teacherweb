@@ -1,9 +1,9 @@
 <script>
+  
   import axios from 'axios';
   import { onMount } from 'svelte';
   import { link, location } from 'svelte-spa-router';
   import {writable} from 'svelte/store';
-
 
   import { tokenConfig } from '../../axiosConfig';
   import {token, truancies, draftMarks} from '../../stores';
@@ -88,8 +88,12 @@
 {#await loadDraftMarks() then draftMarks}
   {#each draftMarks as draftMark}
     <a href="{$location}/modify/{draftMark.id}" use:link>
-      {draftMark.value} - {draftMark.dateDay}.{draftMark.dateMonth}<br>
+      {draftMark.value} - {draftMark.dateDay}.{draftMark.dateMonth}
+    </a> -- 
+    <a href="{$location}/definitivate/{draftMark.id}" use:link>
+      definitiveaza
     </a>
+    <br>
   {/each}
   <a href="{$location}/add/draftmark" use:link> adauga nota</a>
 
