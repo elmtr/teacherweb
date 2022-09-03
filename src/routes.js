@@ -31,6 +31,9 @@ import Profile from './routes/profile/Profile.svelte'
 import ChangePassword from './routes/profile/ChangePassword.svelte'
 import ChangePasscode from './routes/profile/ChangePasscode.svelte'
 
+// timetable
+import Timetable from './routes/timetable/Timetable.svelte'
+
 export default {
     '/': Home,
     
@@ -58,4 +61,6 @@ export default {
     '/profile': Profile,
     '/profile/change-password': ChangePassword,
     '/profile/change-passcode': ChangePasscode,
+
+    '/timetable': Timetable,
 };
