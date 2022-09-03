@@ -58,5 +58,4 @@ export default {
     '/profile': Profile,
     '/profile/change-password': ChangePassword,
     '/profile/change-passcode': ChangePasscode,
-
 };
