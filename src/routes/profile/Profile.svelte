@@ -9,7 +9,7 @@
     {profile.lastName} {profile.firstName}
     <br>
     {#if profile.homeroom.id !== ""}
-      {profile.homeroom.gradeLetter}{profile.homeroom.gradeNumber}
+      {profile.homeroom.gradeNumber}{profile.homeroom.gradeLetter}
     {/if}
 
     <a href="/profile/change-password" use:link>schimba parola</a><br>
