@@ -26,6 +26,11 @@ import ModifyDraftMark from './routes/add/ModifyDraftMark.svelte'
 import DefinitivateDraftMark from './routes/add/DefinitivateDraftMark.svelte'
 import MotivateTruancy from './routes/add/MotivateTruancy.svelte'
 
+// profile
+import Profile from './routes/profile/Profile.svelte'
+import ChangePassword from './routes/profile/ChangePassword.svelte'
+import ChangePasscode from './routes/profile/ChangePasscode.svelte'
+
 export default {
     '/': Home,
     
@@ -49,4 +54,9 @@ export default {
     '/teacher/:subjectID/:studentID/modify/:id': ModifyDraftMark,
     '/teacher/:subjectID/:studentID/definitivate/:id': DefinitivateDraftMark,
     '/teacher/:subjectID/:studentID/motivate/:id': MotivateTruancy,
+
+    '/profile': Profile,
+    '/profile/change-password': ChangePassword,
+    '/profile/change-passcode': ChangePasscode,
+
 };
