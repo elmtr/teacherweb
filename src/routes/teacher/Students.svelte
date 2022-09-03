@@ -1,7 +1,7 @@
 <script>
   
   import axios from 'axios';
-  import { tokenConfig } from '../../axiosConfig';
+  import { tokenConfig, apiURL } from '../../axiosConfig';
   import {token} from '../../stores';
   import {link} from 'svelte-spa-router';
 
@@ -9,7 +9,7 @@
 
   async function loadStudents() {
         const {data} = await axios.get(
-      `http://127.0.0.1:4200/v1/teacher/students?id=${params.subjectID}`,
+      `${apiURL}/v1/teacher/students?id=${params.subjectID}`,
       tokenConfig($token),
     )
     return data

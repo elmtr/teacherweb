@@ -1,7 +1,7 @@
 <script>
 
   import axios from 'axios'
-  import {config} from '../../axiosConfig'
+  import {config, apiURL} from '../../axiosConfig'
   import {push} from 'svelte-spa-router'
   
   let phone
@@ -10,7 +10,7 @@
   async function submit() {
     try {
       const {data} = await axios.post(
-        'http://127.0.0.1:4200/v1/teacher/login',
+        `${apiURL}/v1/teacher/login`,
         {phone, password},
         config
       )

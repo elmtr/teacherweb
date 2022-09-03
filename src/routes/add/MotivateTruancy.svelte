@@ -1,7 +1,7 @@
 <script>
 
   import axios from 'axios'
-  import {tokenConfig} from '../../axiosConfig'
+  import {tokenConfig, apiURL} from '../../axiosConfig'
   import {token, truancies} from '../../stores'
   import {pop} from 'svelte-spa-router'
 
@@ -10,7 +10,7 @@
   async function submit() {
     try {
       const {data} = await axios.patch(
-        `http://127.0.0.1:4200/v1/teacher/truancies?id=${params.id}`,
+        `${apiURL}/v1/teacher/truancies?id=${params.id}`,
         {},
         tokenConfig($token)
       )
@@ -23,7 +23,7 @@
   async function loadTruancies() {
     if ($truancies.length < 1) {
       const {data} = await axios.get(
-        `http://127.0.0.1:4200/v1/teacher/truancies?subjectID=${params.subjectID}&studentID=${params.studentID}`,
+        `${apiURL}/v1/teacher/truancies?subjectID=${params.subjectID}&studentID=${params.studentID}`,
         tokenConfig($token),
       )
       truancies.set(data)

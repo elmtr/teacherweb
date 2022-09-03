@@ -1,11 +1,10 @@
 <script>
   
   import axios from 'axios';
-  import { onMount } from 'svelte';
   import { link, location } from 'svelte-spa-router';
   import {writable} from 'svelte/store';
 
-  import { tokenConfig } from '../../axiosConfig';
+  import { tokenConfig, apiURL } from '../../axiosConfig';
   import {token, truancies, draftMarks} from '../../stores';
 
   let pointsValue = writable(0);
@@ -13,7 +12,7 @@
 
   async function loadPoints() {
     const {data} = await axios.get(
-      `http://127.0.0.1:4200/v1/teacher/points?subjectID=${params.subjectID}&studentID=${params.studentID}`,
+      `${apiURL}/v1/teacher/points?subjectID=${params.subjectID}&studentID=${params.studentID}`,
       tokenConfig($token),
     )
     pointsValue.set(data.value)
@@ -23,7 +22,7 @@
 
   async function loadDraftMarks() {
     const {data} = await axios.get(
-      `http://127.0.0.1:4200/v1/teacher/draftMarks?subjectID=${params.subjectID}&studentID=${params.studentID}`,
+      `${apiURL}/v1/teacher/draftMarks?subjectID=${params.subjectID}&studentID=${params.studentID}`,
       tokenConfig($token),
     )
     draftMarks.set(data)
@@ -33,7 +32,7 @@
 
   async function loadMarks() {
     const {data} = await axios.get(
-      `http://127.0.0.1:4200/v1/teacher/marks?subjectID=${params.subjectID}&studentID=${params.studentID}`,
+      `${apiURL}/v1/teacher/marks?subjectID=${params.subjectID}&studentID=${params.studentID}`,
       tokenConfig($token),
     )
     return data
@@ -41,7 +40,7 @@
 
   async function loadTruancies() {
     const {data} = await axios.get(
-      `http://127.0.0.1:4200/v1/teacher/truancies?subjectID=${params.subjectID}&studentID=${params.studentID}`,
+      `${apiURL}/v1/teacher/truancies?subjectID=${params.subjectID}&studentID=${params.studentID}`,
       tokenConfig($token),
     )
     truancies.set(data)
@@ -53,7 +52,7 @@
     pointsValue.set($pointsValue - 1)
 
     const {data} = await axios.patch(
-      `http://127.0.0.1:4200/v1/teacher/points/decrease?subjectID=${params.subjectID}&studentID=${params.studentID}`,
+      `${apiURL}/v1/teacher/points/decrease?subjectID=${params.subjectID}&studentID=${params.studentID}`,
       {},
       tokenConfig($token)
     )
@@ -63,7 +62,7 @@
     pointsValue.set($pointsValue + 1)
 
     const {data} = await axios.patch(
-      `http://127.0.0.1:4200/v1/teacher/points/increase?subjectID=${params.subjectID}&studentID=${params.studentID}`,
+      `${apiURL}/v1/teacher/points/increase?subjectID=${params.subjectID}&studentID=${params.studentID}`,
       {},
       tokenConfig($token)
     )

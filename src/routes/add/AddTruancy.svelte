@@ -1,6 +1,6 @@
 <script>
   import axios from 'axios'
-  import {tokenConfig} from '../../axiosConfig'
+  import {tokenConfig, apiURL} from '../../axiosConfig'
   import {token} from '../../stores'
   import {pop} from 'svelte-spa-router'
 
@@ -12,7 +12,7 @@
   async function submit() {
     try {
       const {data} = await axios.post(
-        'http://127.0.0.1:4200/v1/teacher/truancies',
+        `${apiURL}/v1/teacher/truancies`,
         {dateDay, dateMonth, "subjectID": params.subjectID, "studentID": params.studentID},
         tokenConfig($token)
       )

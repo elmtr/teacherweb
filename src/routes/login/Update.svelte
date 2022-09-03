@@ -1,7 +1,7 @@
 <script>
 
   import axios from 'axios'
-  import {tokenConfig} from '../../axiosConfig'
+  import {tokenConfig, apiURL} from '../../axiosConfig'
   import {push} from 'svelte-spa-router'
   import {token, info} from '../../stores'
   import {onMount} from 'svelte'
@@ -19,7 +19,7 @@
   async function submit() {
     try {
       const {data} = await axios.post(
-        'http://127.0.0.1:4200/v1/teacher/login/update',
+        `${apiURL}/v1/teacher/login/update`,
         {phone, passcode},
         tokenConfig(localStorage.getItem("userToken"))
       )

@@ -1,16 +1,16 @@
 <script>
 
   import axios from 'axios'
-  import {tokenConfig} from '../../axiosConfig'
+  import {tokenConfig, apiURL} from '../../axiosConfig'
   import {token, draftMarks} from '../../stores'
-  import {pop, push} from 'svelte-spa-router'
+  import {pop} from 'svelte-spa-router'
 
   export let params = {}
 
   async function submit() {
     try {
       const {data} = await axios.post(
-        `http://127.0.0.1:4200/v1/teacher/draftmarks/definitivate?id=${params.id}`,
+        `${apiURL}/v1/teacher/draftmarks/definitivate?id=${params.id}`,
         {},
         tokenConfig($token)
       )
@@ -23,7 +23,7 @@
   async function loadDraftMarks() {
     if ($draftMarks.length < 1) {
       const {data} = await axios.get(
-        `http://127.0.0.1:4200/v1/teacher/draftmarks?subjectID=${params.subjectID}&studentID=${params.studentID}`,
+        `${apiURL}/v1/teacher/draftmarks?subjectID=${params.subjectID}&studentID=${params.studentID}`,
         tokenConfig($token),
       )
       draftMarks.set(data)
