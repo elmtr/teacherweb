@@ -18,7 +18,7 @@
     try {
       const {data} = await axios.put(
         `${apiURL}/v1/teacher/draftmarks`,
-        {"id": params.id, "value": Number(value), dateDay, dateMonth, "subjectID": params.subjectID, "studentID": params.studentID},
+        {"id": params.key, "value": Number(value), dateDay, dateMonth, "subjectKey": params.subjectKey, "studentKey": params.studentKey},
         tokenConfig($token)
       )
       pop()
@@ -27,14 +27,14 @@
     }
   }
 
-  async function loadDraftMarks() {
+  async function fetchDraftMarks() {
     if ($draftMarks.length < 1) {
       const {data} = await axios.get(
-        `${apiURL}/v1/teacher/draftmarks?subjectID=${params.subjectID}&studentID=${params.studentID}`,
+        `${apiURL}/v1/teacher/draftmarks?subjectKey=${params.subjectKey}&studentKey=${params.studentKey}`,
         tokenConfig($token),
       )
       data.forEach(iDraftMark => {
-        if (iDraftMark.id == params.id) {
+        if (iDraftMark.key == params.key) {
           draftMark.set(iDraftMark)
         }
       });
@@ -44,7 +44,7 @@
       return data
     } else {
       $draftMarks.forEach(iDraftMark => {
-        if (iDraftMark.id == params.id) {
+        if (iDraftMark.key == params.key) {
           draftMark.set(iDraftMark)
         }
       });
@@ -58,9 +58,9 @@
 </script>
 
 <main>
-  {#await loadDraftMarks() then draftMarks}
+  {#await fetchDraftMarks() then draftMarks}
     {#each draftMarks as draftMark}
-        {#if draftMark.id == params.id}
+        {#if draftMark.key == params.key}
           <input name="value" placeholder="value" type="text" bind:value={value}>
           <input name="dateDay" placeholder="dateDay" type="text" bind:value={dateDay}>
           <input name="dateMonth" placeholder="dateMonth" type="text" bind:value={dateMonth}>

@@ -10,7 +10,7 @@
   async function submit() {
     try {
       const {data} = await axios.post(
-        `${apiURL}/v1/teacher/draftmarks/definitivate?id=${params.id}`,
+        `${apiURL}/v1/teacher/draftmarks/definitivate?id=${params.key}`,
         {},
         tokenConfig($token)
       )
@@ -20,10 +20,10 @@
     }
   }
 
-  async function loadDraftMarks() {
+  async function fetchDraftMarks() {
     if ($draftMarks.length < 1) {
       const {data} = await axios.get(
-        `${apiURL}/v1/teacher/draftmarks?subjectID=${params.subjectID}&studentID=${params.studentID}`,
+        `${apiURL}/v1/teacher/draftmarks?subjectKey=${params.subjectKey}&studentKey=${params.studentKey}`,
         tokenConfig($token),
       )
       draftMarks.set(data)
@@ -37,9 +37,9 @@
 </script>
 
 <main>
-  {#await loadDraftMarks() then draftMarks}
+  {#await fetchDraftMarks() then draftMarks}
     {#each draftMarks as draftMark}
-        {#if draftMark.id == params.id}
+        {#if draftMark.key == params.key}
           {draftMark.value} - {draftMark.dateDay}.{draftMark.dateMonth}
         {/if}
     {/each}

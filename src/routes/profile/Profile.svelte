@@ -8,7 +8,7 @@
   {#if profile}
     {profile.lastName} {profile.firstName}
     <br>
-    {#if profile.homeroom.id !== ""}
+    {#if profile.homeroom.key !== ""}
       {profile.homeroom.gradeNumber}{profile.homeroom.gradeLetter}
     {/if}
 

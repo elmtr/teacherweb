@@ -13,7 +13,7 @@
     try {
       const {data} = await axios.post(
         `${apiURL}/v1/teacher/truancies`,
-        {dateDay, dateMonth, "subjectID": params.subjectID, "studentID": params.studentID},
+        {dateDay, dateMonth, "subjectKey": params.subjectKey, "studentKey": params.studentKey},
         tokenConfig($token)
       )
       pop()

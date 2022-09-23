@@ -1,52 +1,62 @@
 <script>
   
-  import axios from 'axios';
-  import { tokenConfig, apiURL } from '../../axiosConfig';
-  import {token} from '../../stores';
+  import {token, today} from '../../stores';
+  import {fetchTimetable} from '../../fetch/fetch'
+    import { writable } from 'svelte/store'
+    import { onMount } from 'svelte'
 
   let days = [1,2,3,4,5]
   let intervals = [1,2,3,4,5,6,7,8,9,10,11,12]
 
   let daysString = ['', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri']
 
-  async function loadTimetable() {
-    const {data} = await axios.get(
-      `${apiURL}/v1/teacher/timetable`,
-      tokenConfig($token),
-    )
-    let timetable = {}
+  let day = writable(1);
+  onMount(() => {
+    if ($today > 5) {
+      day.set(1)
+    } else day.set($today)
+  })
 
-    for (let dayIndex in days) {
-      let day = days[dayIndex]
-      timetable[day] = {}
-
-      for (let intervalIndex in intervals) {
-        let interval = intervals[intervalIndex]
-        timetable[day][interval] = {}
-      }
-    }
-
-    for (let periodIndex in data) {
-      let period = data[periodIndex]
-      timetable[period.day][period.interval] = period
-    }
-    console.log(timetable)
-    return timetable
-  }
 
 </script>
 
-{#await loadTimetable() then timetable}
-  {#each days as day}
+<div></div>
+
+<span on:click={() => {
+  if ($day === 1) {
+    day.set(5)
+  } else {
+    day.update(value => value - 1)
+  }
+}}>prev</span>
+
+<div>
+  {daysString[$day]}
+</div>
+
+<span on:click={() => {
+  if ($day === 5) {
+    day.set(1)
+  } else {
+    day.update(value => value + 1)
+  }
+}}>next</span><br>
+
+{#await fetchTimetable($token) then periods}
     <table>
-      <th>{daysString[day]}</th>
       {#each intervals as interval}
         <tr>
           <td>
-            {#if timetable[day][interval].subject}
-              {timetable[day][interval].subject.name} - 
-              {timetable[day][interval].subject.grade.gradeNumber}{timetable[day][interval].subject.grade.gradeLetter} 
-              ({timetable[day][interval].room})
+            {#if periods[$day][interval].length > 0}
+              {#each periods[$day][interval] as period}
+                {period.subject.name}{' / '}
+              {/each}
+
+              (
+              {#each periods[$day][interval] as period}
+                {period.room}{' / '}
+              {/each}
+              )
             {:else}
               -
              {/if}
@@ -54,5 +64,4 @@
         </tr>
       {/each}
   </table>
-  {/each}
 {/await}

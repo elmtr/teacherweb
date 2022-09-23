@@ -13,7 +13,7 @@ import VerifyLoginCode from './routes/login/VerifyCode.svelte'
 import Update from './routes/login/Update.svelte'
 
 // getting
-import Students from './routes/teacher/Students.svelte'
+import Subject from './routes/teacher/Subject.svelte'
 import Student from './routes/teacher/Student.svelte'
 
 // adding
@@ -47,16 +47,16 @@ export default {
     '/login/verify-code': VerifyLoginCode,
     '/login/update': Update,
 
-    '/teacher/:subjectID': Students,
-    '/teacher/:subjectID/:studentID': Student,
+    '/teacher/:gradeKey': Subject,
+    '/teacher/:gradeKey/:subjectKey/:studentKey': Student,
 
-    '/teacher/:subjectID/:studentID/add/mark': AddMark,
-    '/teacher/:subjectID/:studentID/add/draftmark': AddDraftMark,
-    '/teacher/:subjectID/:studentID/add/truancy': AddTruancy,
+    '/teacher/:gradeKey/:subjectKey/:studentKey/add/mark': AddMark,
+    '/teacher/:gradeKey/:subjectKey/:studentKey/add/draftmark': AddDraftMark,
+    '/teacher/:gradeKey/:subjectKey/:studentKey/add/truancy': AddTruancy,
 
-    '/teacher/:subjectID/:studentID/modify/:id': ModifyDraftMark,
-    '/teacher/:subjectID/:studentID/definitivate/:id': DefinitivateDraftMark,
-    '/teacher/:subjectID/:studentID/motivate/:id': MotivateTruancy,
+    '/teacher/:gradeKey/:subjectKey/:studentKey/modify/:id': ModifyDraftMark,
+    '/teacher/:gradeKey/:subjectKey/:studentKey/definitivate/:id': DefinitivateDraftMark,
+    '/teacher/:gradeKey/:subjectKey/:studentKey/motivate/:id': MotivateTruancy,
 
     '/profile': Profile,
     '/profile/change-password': ChangePassword,

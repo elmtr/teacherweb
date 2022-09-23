@@ -10,7 +10,7 @@
   async function submit() {
     try {
       const {data} = await axios.patch(
-        `${apiURL}/v1/teacher/truancies?id=${params.id}`,
+        `${apiURL}/v1/teacher/truancies?id=${params.key}`,
         {},
         tokenConfig($token)
       )
@@ -20,10 +20,10 @@
     }
   }
 
-  async function loadTruancies() {
+  async function fetchTruancies() {
     if ($truancies.length < 1) {
       const {data} = await axios.get(
-        `${apiURL}/v1/teacher/truancies?subjectID=${params.subjectID}&studentID=${params.studentID}`,
+        `${apiURL}/v1/teacher/truancies?subjectKey=${params.subjectKey}&studentKey=${params.studentKey}`,
         tokenConfig($token),
       )
       truancies.set(data)
@@ -37,9 +37,9 @@
 </script>
 
 <main>
-  {#await loadTruancies() then truancies}
+  {#await fetchTruancies() then truancies}
     {#each truancies as truancy}
-        {#if truancy.id == params.id}
+        {#if truancy.key == params.key}
           {truancy.dateDay}.{truancy.dateMonth}
         {/if}
     {/each}
