@@ -11,7 +11,6 @@
   const nextSubject = writable("");
   const currentSubject = writable("")
   currentSubject.set(Object.keys($subjects[params.gradeKey])[0])
-  console.log($currentSubject)
   const prevSubject = writable("");
   
   let subjectKeys = Object.keys($subjects[params.gradeKey]).concat(Object.keys($subjects[params.gradeKey]))

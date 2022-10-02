@@ -18,6 +18,6 @@ export const subjects = writable({});
 export const grades = writable({});
 
 // core
-export const draftMarks = writable([]);
 export const marks = writable({});
-export const truancies = writable([]);
+export const draftMarks = writable({});
+export const truancies = writable({});

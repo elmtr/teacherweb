@@ -1,28 +1,14 @@
 <script>
 
-  import axios from 'axios'
-  import {tokenConfig, apiURL} from '../../axiosConfig'
-  import {token} from '../../stores'
-  import {pop} from 'svelte-spa-router'
+  import {token, marks} from '../../stores'
+  import { postMark } from '../../fetch/set'
+  import { pop } from 'svelte-spa-router'
 
   export let params = {}
 
-  let value
-  let dateDay
-  let dateMonth
-
-  async function submit() {
-    try {
-      const {data} = await axios.post(
-        `${apiURL}/v1/teacher/marks`,
-        {"value": Number(value), dateDay, dateMonth, "subjectKey": params.subjectKey, "studentKey": params.studentKey},
-        tokenConfig($token)
-      )
-      pop()
-    } catch(error) {
-      console.log(error.response.data.message)
-    }
-  }
+  let value = 5
+  let dateDay = "20"
+  let dateMonth = "10"
 
 </script>
 
@@ -32,5 +18,8 @@
   <input name="dateDay" placeholder="dateDay" type="text" bind:value={dateDay}>
   <input name="dateMonth" placeholder="dateMonth" type="text" bind:value={dateMonth}>
 
-  <input type="submit" value="submit" on:click={submit}/>
+  <input type="submit" value="submit" on:click={async () => {
+    await postMark($token, Number(value), dateDay, dateMonth, params.subjectKey, params.studentKey);
+    pop()
+  }}/>
 </main>

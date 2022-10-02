@@ -13,7 +13,7 @@ import VerifyLoginCode from './routes/login/VerifyCode.svelte'
 import Update from './routes/login/Update.svelte'
 
 // getting
-import Subject from './routes/teacher/Subject.svelte'
+import Grade from './routes/teacher/Grade.svelte'
 import Student from './routes/teacher/Student.svelte'
 
 // adding
@@ -47,16 +47,16 @@ export default {
     '/login/verify-code': VerifyLoginCode,
     '/login/update': Update,
 
-    '/teacher/:gradeKey': Subject,
+    '/teacher/:gradeKey': Grade,
     '/teacher/:gradeKey/:subjectKey/:studentKey': Student,
 
     '/teacher/:gradeKey/:subjectKey/:studentKey/add/mark': AddMark,
     '/teacher/:gradeKey/:subjectKey/:studentKey/add/draftmark': AddDraftMark,
     '/teacher/:gradeKey/:subjectKey/:studentKey/add/truancy': AddTruancy,
 
-    '/teacher/:gradeKey/:subjectKey/:studentKey/modify/:id': ModifyDraftMark,
-    '/teacher/:gradeKey/:subjectKey/:studentKey/definitivate/:id': DefinitivateDraftMark,
-    '/teacher/:gradeKey/:subjectKey/:studentKey/motivate/:id': MotivateTruancy,
+    '/teacher/:gradeKey/:subjectKey/:studentKey/modify/:key': ModifyDraftMark,
+    '/teacher/:gradeKey/:subjectKey/:studentKey/definitivate/:key': DefinitivateDraftMark,
+    '/teacher/:gradeKey/:subjectKey/:studentKey/motivate/:key': MotivateTruancy,
 
     '/profile': Profile,
     '/profile/change-password': ChangePassword,

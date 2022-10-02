@@ -1,7 +1,8 @@
 import axios from "axios"
 import { tokenConfig, apiURL } from '../axiosConfig';
 import {sortPeriods} from '../sort/sort'
-import {students, marks, timetable, school} from '../stores'
+import {get} from 'svelte/store'
+import {students, draftMarks,  marks, truancies, timetable, school} from '../stores'
 
 export async function fetchSchool(token) {
   let schoolValue = {}
@@ -51,6 +52,39 @@ export async function fetchStudents(token, gradeKey) {
   return studentsValue[gradeKey]
 }
 
+export async function fetchDraftMarks(token, subjectKey, studentKey) {
+  const {data} = await axios.get(
+    `${apiURL}/v1/teacher/draftMarks?subjectKey=${subjectKey}&studentKey=${studentKey}`,
+    tokenConfig(token),
+  )  
+  draftMarks.set(data)
+  console.log("fetched draftMarks")
+  console.log(get(draftMarks))
+  return data
+}
+
+export async function fetchMarks(token, subjectKey, studentKey) {
+  const {data} = await axios.get(
+    `${apiURL}/v1/teacher/marks?subjectKey=${subjectKey}&studentKey=${studentKey}`,
+    tokenConfig(token),
+  )  
+  marks.set(data)
+
+  return data
+}
+
+export async function fetchTruancies(token, subjectKey, studentKey) {
+  const {data} = await axios.get(
+    `${apiURL}/v1/teacher/truancies?subjectKey=${subjectKey}&studentKey=${studentKey}`,
+    tokenConfig(token),
+  )  
+  truancies.set(data)
+  console.log("fetched truancies")
+  console.log(get(truancies))
+
+  return data
+}
+
 export async function fetchPoints(token, subjectKey, studentKey) {
   const {data} = await axios.get(
     `${apiURL}/v1/teacher/points?subjectKey=${subjectKey}&studentKey=${studentKey}`,
@@ -60,49 +94,16 @@ export async function fetchPoints(token, subjectKey, studentKey) {
   return data
 }
 
-export async function fetchDraftMarks(token, subjectKey, studentKey) {
-  const {data} = await axios.get(
-    `${apiURL}/v1/teacher/draftMarks?subjectKey=${subjectKey}&studentKey=${studentKey}`,
-    tokenConfig(token),
-  )
-  return data
-}
-
-export async function fetchMarks(token, subjectKey, studentKey) {
-  let marksValue = {}
-  marks.subscribe(value => {
-    marksValue = value
-  })
-  if (!marksValue[subjectKey][studentKey]) {
-    const {data} = await axios.get(
-      `${apiURL}/v1/teacher/marks?subjectKey=${subjectKey}&studentKey=${studentKey}`,
-      tokenConfig(token),
-    )
-    console.log(data)
-    marksValue[subjectKey][studentKey] = data
-    marks.set(marksValue)
-  }
-  return marksValue[subjectKey][studentKey]
-}
-
-export async function fetchTruancies(token, subjectKey, studentKey) {
-  const {data} = await axios.get(
-    `${apiURL}/v1/teacher/truancies?subjectKey=${subjectKey}&studentKey=${studentKey}`,
-    tokenConfig(token),
-  )
-  return data
-}
-
-export async function patchDecreasePoints($token, key) {
-  const {data} = await axios.patch(
+export async function updateDecreasePoints($token, key) {
+  const {data} = await axios.update(
     `${apiURL}/v1/teacher/points/decrease?key=${key}`,
     {},
     tokenConfig($token)
   )
 }
 
-export async function patchIncreasePoints($token, key) {
-  const {data} = await axios.patch(
+export async function updateIncreasePoints($token, key) {
+  const {data} = await axios.update(
     `${apiURL}/v1/teacher/points/increase?key=${key}`,
     {},
     tokenConfig($token)

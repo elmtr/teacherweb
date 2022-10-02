@@ -1,17 +1,16 @@
 <script>
 	
-	import {token, today, now, school, subjects, grades} from '../stores'
+	import {token, today, now, subjects, grades} from '../stores'
 	import {push, link} from 'svelte-spa-router'
 	import {fetchSchool, fetchTimetable} from '../fetch/fetch'
-  import { onMount } from 'svelte'
 	import { findInterval } from '../utils/utils'
 	import { writable } from 'svelte/store'
-
+	
 	if ($token == "") {
 		push("/login/update")
 	}
 
-	let day = 1
+	let day = $today
 	let interval = writable(1)
 
 	function setInterval(school) {
