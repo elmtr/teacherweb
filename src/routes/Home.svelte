@@ -9,6 +9,7 @@
 	// kiui
 	import CurrentPeriod from '../kiui/CurrentPeriod.svelte'
 	import NextPeriod from '../kiui/NextPeriod.svelte'
+  import Grade from '../kiui/Grade.svelte'
 	
 	if ($token == "") {
 		push("/login/update")
@@ -26,7 +27,7 @@
 <main>
 	{#if $subjects}
 		{#each Object.keys($grades) as grade}
-			<a href={`/teacher/${$grades[grade].key}`} use:link>{$grades[grade].gradeNumber}{$grades[grade].gradeLetter}</a> <br>
+			<Grade grade={$grades[grade]} />
 		{/each}
 	{/if}
 

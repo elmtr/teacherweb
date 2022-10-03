@@ -30,3 +30,15 @@
 	<Router {routes} />
 </main>
 
+<style>
+	:root {
+		--darkgreen: #054D1B;
+		--lightgreen: #38E377;
+		--gray: #BDBDBD;
+		--black: #303030;
+		--white: white;
+	}
+
+	
+</style>
+
