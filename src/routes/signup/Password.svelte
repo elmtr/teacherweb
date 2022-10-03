@@ -3,6 +3,10 @@
   import axios from 'axios'
   import {tokenConfig, apiURL} from '../../axiosConfig'
   import {push} from 'svelte-spa-router'
+
+  // kiui
+  import InputValue from '../../kiui/InputValue.svelte'
+  import SubmitButton from '../../kiui/SubmitButton.svelte'
   
   let password
 
@@ -24,7 +28,7 @@
 </script>
 
 <main>
-  <input name="password" placeholder="password" type="text" bind:value={password}>
+  <InputValue placeholder="password" bind:value={password} />
 
-  <input type="submit" value="submit" on:click={submit}/>
+  <SubmitButton value="submit" onClick={submit} />
 </main>

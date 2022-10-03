@@ -1,24 +1,34 @@
 <script>
 
-  import {token, marks} from '../../stores'
-  import { postMark } from '../../fetch/set'
+  import {token, d} from '../../stores'
   import { pop } from 'svelte-spa-router'
+  import { postMark } from '../../fetch/set'
+
+  // kiui
+  import InputValue from '../../kiui/InputValue.svelte'
+  import InputSelect from '../../kiui/InputSelect.svelte'
+  import SubmitButton from '../../kiui/SubmitButton.svelte'
 
   export let params = {}
 
-  let value = 5
-  let dateDay = "20"
-  let dateMonth = "10"
+  let value = 10
+  let dateDay = ('0' + d.getDate()).slice(-2)
+  let dateMonth = ('0' + (d.getMonth() + 1)).slice(-2)
 
 </script>
 
 <main>
   <br>
-  <input name="value" placeholder="value" type="text" bind:value={value}>
-  <input name="dateDay" placeholder="dateDay" type="text" bind:value={dateDay}>
-  <input name="dateMonth" placeholder="dateMonth" type="text" bind:value={dateMonth}>
+  <InputValue placeholder="value" bind:value={value} />
 
-  <input type="submit" value="submit" on:click={async () => {
+  <br>
+
+  <InputSelect bind:value={dateDay} list={[...Array(31).keys()]}/>
+  <InputSelect bind:value={dateMonth} list={[...Array(12).keys()]}/>
+
+  <br>
+
+  <SubmitButton value="Adaugă notă" onClick={async () => {
     await postMark($token, Number(value), dateDay, dateMonth, params.subjectKey, params.studentKey);
     pop()
   }}/>

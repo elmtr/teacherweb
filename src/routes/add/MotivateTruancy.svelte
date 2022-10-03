@@ -6,6 +6,7 @@
   import {pop} from 'svelte-spa-router'
   import {fetchTruancies} from '../../fetch/fetch'
   import { updateMotivateTruancy } from '../../fetch/update'
+  import SubmitButton from '../../kiui/SubmitButton.svelte'
 
   export let params = {}
 
@@ -21,7 +22,7 @@
   {/await}
   <br>
 
-  <input type="submit" value="motiveaza absenta" on:click={async () => {
+  <SubmitButton value="motiveaza absenta" onClick={async () => {
     await updateMotivateTruancy($token, params.key)
     pop()
   }}/>

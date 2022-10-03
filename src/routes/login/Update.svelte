@@ -5,6 +5,9 @@
   import {push} from 'svelte-spa-router'
   import {token, info} from '../../stores'
   import {onMount} from 'svelte'
+    
+  // kiui
+  import SubmitButton from '../../kiui/SubmitButton.svelte'
 
   let passcode
   let phone
@@ -42,5 +45,5 @@
 <main>
   <input name="passcode" placeholder="passcode" type="text" bind:value={passcode} />
 
-  <input type="submit" value="submit" on:click={submit}/>
+  <SubmitButton value="Conectare" onClick={submit}/>
 </main>

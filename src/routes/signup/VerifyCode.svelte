@@ -3,6 +3,10 @@
   import axios from 'axios'
   import {tokenConfig, apiURL} from '../../axiosConfig'
   import {push} from 'svelte-spa-router'
+
+  // kiui
+  import InputValue from '../../kiui/InputValue.svelte'
+  import SubmitButton from '../../kiui/SubmitButton.svelte'
   
   let code
 
@@ -26,7 +30,7 @@
 </script>
 
 <main>
-  <input name="verify-code" placeholder="verify-code" type="text" bind:value={code} />
+  <InputValue placeholder="verify-code" bind:value={code} />
 
-  <input type="submit" value="submit" on:click={submit}/>
+  <SubmitButton value="submit" onClick={submit} />
 </main>

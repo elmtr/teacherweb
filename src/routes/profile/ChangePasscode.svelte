@@ -5,6 +5,11 @@
   import {pop} from 'svelte-spa-router'
   import {token} from '../../stores'
 
+  // kiui
+  import InputValue from '../../kiui/InputValue.svelte'
+  import SubmitButton from '../../kiui/SubmitButton.svelte'
+
+
   let passcode
   let newPasscode
 
@@ -26,8 +31,8 @@
 
 <main>
   <br>
-  <input name="passcode" placeholder="passcode" type="text" bind:value={passcode}>
-  <input name="newPasscode" placeholder="newPasscode" type="text" bind:value={newPasscode}>
+  <InputValue placeholder="passcode" bind:value={passcode} />
+  <InputValue placeholder="newPasscode" bind:value={newPasscode} />
 
-  <input type="submit" value="submit" on:click={submit}/>
+  <SubmitButton  value="submit" on:click={submit} />
 </main>

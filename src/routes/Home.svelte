@@ -5,12 +5,15 @@
 	import {fetchSchool, fetchTimetable} from '../fetch/fetch'
 	import { findInterval } from '../utils/utils'
 	import { writable } from 'svelte/store'
+
+	// kiui
+	import CurrentPeriod from '../kiui/CurrentPeriod.svelte'
+	import NextPeriod from '../kiui/NextPeriod.svelte'
 	
 	if ($token == "") {
 		push("/login/update")
 	}
 
-	let day = $today
 	let interval = writable(1)
 
 	function setInterval(school) {
@@ -32,8 +35,10 @@
 	{/await}
 
 	{#await fetchTimetable($token) then timetable}
-		{timetable[day][$interval][0].subject.grade.gradeNumber}{timetable[day][$interval][0].subject.grade.gradeLetter} - {timetable[day][$interval][0].subject.name}
-		<br>
-		{timetable[day][$interval + 1][0].subject.grade.gradeNumber}{timetable[day][$interval + 1][0].subject.grade.gradeLetter} - {timetable[day][$interval + 1][0].subject.name}
+		{#if timetable[$today]}
+			<CurrentPeriod timetable={timetable} day={$today} interval={$interval} />
+			<br>
+			<NextPeriod timetable={timetable} day={$today} interval={$interval + 1} />
+		{/if}
 	{/await}
 </main>

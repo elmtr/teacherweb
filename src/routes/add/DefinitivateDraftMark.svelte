@@ -7,6 +7,9 @@
   import {updateDefinitivateDraftMark} from '../../fetch/update'
   import {pop} from 'svelte-spa-router'
 
+  // kiui
+  import SubmitButton from '../../kiui/SubmitButton.svelte'
+
   export let params = {}
 
 </script>
@@ -21,7 +24,7 @@
   {/await}
   <br>
 
-  <input type="submit" value="definitiveaza nota ciorna" on:click={async () => {
+  <SubmitButton value="Definitivează nota ciornă" onClick={async () => {
     await updateDefinitivateDraftMark($token,params.subjectKey, params.studentKey, params.key)
     pop()
   }}/>

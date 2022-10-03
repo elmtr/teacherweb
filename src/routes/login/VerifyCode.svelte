@@ -3,6 +3,9 @@
   import axios from 'axios'
   import {config, apiURL} from '../../axiosConfig'
   import {push} from 'svelte-spa-router'
+  
+  // kiui
+  import SubmitButton from '../../kiui/SubmitButton.svelte'
 
   let code
 
@@ -27,5 +30,5 @@
   <br>
   <input name="code" placeholder="code" type="text" bind:value={code}>
 
-  <input type="submit" value="submit" on:click={submit}/>
+  <SubmitButton value="submit" onClick={submit}/>
 </main>

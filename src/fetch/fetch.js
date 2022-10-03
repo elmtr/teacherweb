@@ -58,8 +58,7 @@ export async function fetchDraftMarks(token, subjectKey, studentKey) {
     tokenConfig(token),
   )  
   draftMarks.set(data)
-  console.log("fetched draftMarks")
-  console.log(get(draftMarks))
+
   return data
 }
 
@@ -79,8 +78,6 @@ export async function fetchTruancies(token, subjectKey, studentKey) {
     tokenConfig(token),
   )  
   truancies.set(data)
-  console.log("fetched truancies")
-  console.log(get(truancies))
 
   return data
 }
@@ -92,20 +89,4 @@ export async function fetchPoints(token, subjectKey, studentKey) {
   )
 
   return data
-}
-
-export async function updateDecreasePoints($token, key) {
-  const {data} = await axios.update(
-    `${apiURL}/v1/teacher/points/decrease?key=${key}`,
-    {},
-    tokenConfig($token)
-  )
-}
-
-export async function updateIncreasePoints($token, key) {
-  const {data} = await axios.update(
-    `${apiURL}/v1/teacher/points/increase?key=${key}`,
-    {},
-    tokenConfig($token)
-  )
 }

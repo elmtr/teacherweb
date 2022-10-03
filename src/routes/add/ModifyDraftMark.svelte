@@ -4,11 +4,14 @@
   import {pop} from 'svelte-spa-router'
   import {writable} from 'svelte/store'
   import { fetchDraftMarks } from '../../fetch/fetch'
-  import {token, draftMarks} from '../../stores'
+  import {token} from '../../stores'
+  
+  // kiui
+  import InputValue from '../../kiui/InputValue.svelte'
+  import InputSelect from '../../kiui/InputSelect.svelte'
+  import SubmitButton from '../../kiui/SubmitButton.svelte'
   
   export let params = {}
-
-  const draftMark = writable({})
 
   let value = writable()
   let dateDay = writable("")
@@ -22,8 +25,6 @@
     return ''
   }
 
-  console.log($draftMarks)
-
 </script>
 
 <main>
@@ -31,15 +32,16 @@
     {#each draftMarks as draftMark}
         {#if draftMark.key == params.key}
           {draftMarkToStore(draftMark.value, draftMark.dateDay, draftMark.dateMonth)}
-          <input name="value" placeholder="value" type="text" bind:value={$value}>
-          <input name="dateDay" placeholder="dateDay" type="text" bind:value={$dateDay}>
-          <input name="dateMonth" placeholder="dateMonth" type="text" bind:value={$dateMonth}>
+          <InputValue placeholder="value" bind:value={$value} />
+          <br>
+          <InputSelect bind:value={$dateDay} list={[...Array(31).keys()]} />
+          <InputSelect bind:value={$dateMonth} list={[...Array(12).keys()]} />
         {/if}
     {/each}
   {/await}
   <br>
 
-  <input type="submit" value="modify nota ciorna" on:click={async () => {
+  <SubmitButton value="Modifică nota ciornă" onClick={async () => {
     await updateModifyDraftMark($token, params.key, Number($value), $dateDay, $dateMonth, params.subjectKey, params.studentKey)
     pop()
   }}/>

@@ -3,7 +3,12 @@
   import axios from 'axios'
   import {config, apiURL} from '../../axiosConfig'
   import {push} from 'svelte-spa-router'
-  
+
+  // kiui
+  import InputValue from '../../kiui/InputValue.svelte'
+  import InputPassword from '../../kiui/InputPassword.svelte'
+  import SubmitButton from '../../kiui/InputPassword.svelte'
+
   let phone
   let password
 
@@ -25,8 +30,8 @@
 
 <main>
   <br>
-  <input name="phone" placeholder="phone" type="text" bind:value={phone}>
-  <input name="password" placeholder="password" type="text" bind:value={password}>
+  <InputValue placeholder="Numarul de telefon" bind:value={phone} />
+  <InputPassword placeholder="Parola" bind:value={password} />
 
-  <input type="submit" value="submit" on:click={submit}/>
+  <SubmitButton value="submit" onClick={submit} />
 </main>

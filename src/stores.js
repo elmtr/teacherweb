@@ -1,11 +1,13 @@
 import {writable} from 'svelte/store';
 
-const d = new Date();
+export const d = new Date();
+
+const days = [7, 1, 2, 3, 4, 5, 6]
 
 // timetable stuff
 export const timetable = writable({});
 export const school = writable({});
-export const today = writable(d.getDay())
+export const today = writable(days[d.getDay()])
 export const now = writable(d.getHours() + d.getMinutes() / 100)
 
 // authentication and authorization

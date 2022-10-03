@@ -2,7 +2,7 @@ import axios from "axios"
 import { tokenConfig, apiURL } from '../axiosConfig';
 
 export async function updateDecreasePoints(token, key) {
-  const {data} = await axios.update(
+  const {data} = await axios.patch(
     `${apiURL}/v1/teacher/points/decrease?key=${key}`,
     {},
     tokenConfig(token)
@@ -10,7 +10,7 @@ export async function updateDecreasePoints(token, key) {
 }
 
 export async function updateIncreasePoints(token, key) {
-  const {data} = await axios.update(
+  const {data} = await axios.patch(
     `${apiURL}/v1/teacher/points/increase?key=${key}`,
     {},
     tokenConfig(token)

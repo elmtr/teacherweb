@@ -4,6 +4,11 @@
   import {config, apiURL} from '../../axiosConfig'
   import {push} from 'svelte-spa-router'
 
+  // kiui
+  import InputValue from '../../kiui/InputValue.svelte'
+  import SubmitButton from '../../kiui/SubmitButton.svelte'
+
+
   let firstName
   let lastName
 
@@ -26,8 +31,8 @@
 
 <main>
   <br>
-  <input name="firstName" placeholder="firstName" type="text" bind:value={firstName}>
-  <input name="lastName" placeholder="lastName" type="text" bind:value={lastName}>
+  <InputValue placeholder="firstName" bind:value={firstName} />
+  <InputValue placeholder="lastName" bind:value={lastName} />
 
-  <input type="submit" value="submit" on:click={submit}/>
+  <SubmitButton value="submit" onClick={submit} />
 </main>

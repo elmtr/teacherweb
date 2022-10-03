@@ -4,6 +4,10 @@
   import {tokenConfig, apiURL} from '../../axiosConfig'
   import {push} from 'svelte-spa-router'
 
+  // kiui
+  import InputValue from '../../kiui/InputValue.svelte'
+  import SubmitButton from '../../kiui/SubmitButton.svelte'
+
   let phone
 
   async function submit() {
@@ -24,7 +28,7 @@
 </script>
 
 <main>
-  <input name="phone" placeholder="phone" type="text" bind:value={phone}>
+  <InputValue placeholder="phone" bind:value={phone} />
 
-  <input type="submit" value="submit" on:click={submit}/>
+  <SubmitButton value="submit" onClick={submit} />
 </main>
