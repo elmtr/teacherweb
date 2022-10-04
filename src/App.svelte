@@ -37,8 +37,8 @@
 		--gray: #BDBDBD;
 		--black: #303030;
 		--white: white;
+		--border-radius: 20px;
+		--border: 1.5px solid var(--darkgreen);
 	}
-
-	
 </style>
 

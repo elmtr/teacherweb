@@ -18,23 +18,19 @@
 	let interval = writable(1)
 
 	function setInterval(school) {
-		interval.set(findInterval(school.intervals, $now))
+		// interval.set(findInterval(school.intervals, $now))
 		return ''
 	}
 
 </script>
 
 <main>
-	{#if $subjects}
-		{#each Object.keys($grades) as grade}
-			<Grade grade={$grades[grade]} />
-		{/each}
-	{/if}
-
+	<!-- getting interval -->
 	{#await fetchSchool($token) then school}
 		{setInterval(school)}
-	{/await}
+	{/await}	
 
+	<!-- getting timetable -->
 	{#await fetchTimetable($token) then timetable}
 		{#if timetable[$today]}
 			<CurrentPeriod timetable={timetable} day={$today} interval={$interval} />
@@ -42,4 +38,11 @@
 			<NextPeriod timetable={timetable} day={$today} interval={$interval + 1} />
 		{/if}
 	{/await}
+
+	<!-- getting grades -->
+	{#if $subjects}
+		{#each Object.keys($grades) as grade}
+			<Grade grade={$grades[grade]} />
+		{/each}
+	{/if}
 </main>
