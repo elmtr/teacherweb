@@ -45,6 +45,6 @@
 		margin-top: 10px;
 		margin-bottom: 5px;
 		font-weight: 600;
-		font-family: sans-serif;
+		font-family: var(--sans-serif);
 	}
 </style>
