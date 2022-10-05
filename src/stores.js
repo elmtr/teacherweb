@@ -26,3 +26,7 @@ export const grades = writable({});
 export const marks = writable({});
 export const draftMarks = writable({});
 export const truancies = writable({});
+
+// dialog boxes
+export const showMotivate = writable(false);
+export const selectedTruancy = writable("");

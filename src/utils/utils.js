@@ -71,3 +71,18 @@ export function findInterval(intervals, time) {
     }
   }
 }
+
+export let months = {
+  "01": "ianuarie",
+  "02": "februarie",
+  "03": "martie",
+  "04": "aprilie",
+  "05": "mai",
+  "06": "iunie",
+  "07": "iulie",
+  "08": "august",
+  "09": "septembrie",
+  "10": "octombrie",
+  "11": "noiembrie",
+  "12": "decembrie",
+}

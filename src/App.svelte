@@ -37,6 +37,7 @@
 		--gray: #BDBDBD;
 		--black: #303030;
 		--white: white;
+		--red: red;
 		--border-radius: 20px;
 		--border: 1.5px solid var(--darkgreen);
 		--width: 93%;
