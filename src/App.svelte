@@ -39,6 +39,7 @@
 		--white: white;
 		--border-radius: 20px;
 		--border: 1.5px solid var(--darkgreen);
+		--width: 93%;
 	}
 </style>
 

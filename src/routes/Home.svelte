@@ -1,6 +1,6 @@
 <script>
 	
-	import {token, today, now, subjects, grades} from '../stores'
+	import {token, today, now, subjects, grades, info} from '../stores'
 	import {push, link} from 'svelte-spa-router'
 	import {fetchSchool, fetchTimetable} from '../fetch/fetch'
 	import { findInterval } from '../utils/utils'
@@ -18,7 +18,7 @@
 	let interval = writable(1)
 
 	function setInterval(school) {
-		// interval.set(findInterval(school.intervals, $now))
+		interval.set(findInterval(school.intervals, $now))
 		return ''
 	}
 
@@ -30,6 +30,10 @@
 		{setInterval(school)}
 	{/await}	
 
+	<div id="greeting">
+		Bună, {$info.firstName}! 👋
+	</div>
+
 	<!-- getting timetable -->
 	{#await fetchTimetable($token) then timetable}
 		{#if timetable[$today]}
@@ -37,12 +41,38 @@
 			<br>
 			<NextPeriod timetable={timetable} day={$today} interval={$interval + 1} />
 		{/if}
+
+		<div id="heading">Clasele mele</div>
+
+		<!-- getting grades -->
+		{#if $subjects}
+			{#each Object.keys($grades) as grade}
+				<Grade grade={$grades[grade]} />
+			{/each}
+		{/if}
 	{/await}
 
-	<!-- getting grades -->
-	{#if $subjects}
-		{#each Object.keys($grades) as grade}
-			<Grade grade={$grades[grade]} />
-		{/each}
-	{/if}
+	
 </main>
+
+<style scoped>
+	#greeting {
+		font-size: 1.8em;
+		color: var(--black);
+		margin-left: 25px;
+		margin-top: 30px;
+		margin-bottom: 20px;
+		font-weight: 600;
+		font-family: sans-serif;
+	}
+
+	#heading {
+		font-size: 1.5em;
+		color: var(--black);
+		margin-left: 30px;
+		margin-top: 30px;
+		margin-bottom: 5px;
+		font-weight: 600;
+		font-family: sans-serif;
+	}
+</style>
