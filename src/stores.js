@@ -28,5 +28,16 @@ export const draftMarks = writable({});
 export const truancies = writable({});
 
 // dialog boxes
-export const showMotivate = writable(false);
-export const selectedTruancy = writable("");
+
+// truancy
+export const showMotivateTruancy = writable(false);
+export const showAddTruancy = writable(false);
+export const selectedTruancy = writable({});
+
+// mark
+export const showAddMark = writable(false);
+
+// draftMark
+export const showAddDraftMark = writable(false);
+export const showModifyDraftMark = writable(false);
+export const selectedDraftMark = writable({})

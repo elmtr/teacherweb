@@ -16,6 +16,10 @@
   
   // kiui dialog
   import MotivateTruancy from '../../kiui/MotivateTruancy.svelte'
+  import AddTruancy from '../../kiui/AddTruancy.svelte'
+  import AddMark from '../../kiui/AddMark.svelte'
+  import AddDraftMark from '../../kiui/AddDraftMark.svelte'
+  import ModifyDraftMark from '../../kiui/ModifyDraftMark.svelte'
 
   let student = writable({})
 
@@ -53,7 +57,12 @@
 
 <Truancies subjectKey={params.subjectKey} studentKey={params.studentKey} />
 
+<!-- pop-ups -->
 <MotivateTruancy />
+<AddTruancy {params} />
+<AddMark {params} />
+<AddDraftMark {params} />
+<ModifyDraftMark {params} />
 
 <style scoped>
   #heading {
