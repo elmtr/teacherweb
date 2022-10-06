@@ -10,6 +10,7 @@
 	import CurrentPeriod from '../kiui/CurrentPeriod.svelte'
 	import NextPeriod from '../kiui/NextPeriod.svelte'
   import Grade from '../kiui/Grade.svelte'
+  import NavBar from '../kiui/ NavBar.svelte'
 	
 	if ($token == "") {
 		push("/login/update")
@@ -29,6 +30,9 @@
 	{#await fetchSchool($token) then school}
 		{setInterval(school)}
 	{/await}	
+
+	<!-- navbar -->
+	<NavBar />
 
 	<div id="greeting">
 		Bună, {$info.firstName}! 👋

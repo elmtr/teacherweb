@@ -2,13 +2,15 @@
   
   import {token, today} from '../../stores';
   import {fetchTimetable} from '../../fetch/fetch'
-    import { writable } from 'svelte/store'
-    import { onMount } from 'svelte'
+  import { writable } from 'svelte/store'
+  import { onMount } from 'svelte'
 
-  let days = [1,2,3,4,5]
+  // kiui
+  import Days from '../../kiui/Days.svelte'
+  import Period from '../../kiui/Period.svelte'
+  import NavBar from '../../kiui/ NavBar.svelte'
+
   let intervals = [1,2,3,4,5,6,7,8,9,10,11,12]
-
-  let daysString = ['', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri']
 
   let day = writable(1);
   onMount(() => {
@@ -17,51 +19,46 @@
     } else day.set($today)
   })
 
-
 </script>
 
-<div></div>
+<div id="container">
+  <div id="heading">Orar</div>
 
-<span on:click={() => {
-  if ($day === 1) {
-    day.set(5)
-  } else {
-    day.update(value => value - 1)
-  }
-}}>prev</span>
-
-<div>
-  {daysString[$day]}
+  <Days {day} />
 </div>
+<div id="spacing"></div>
 
-<span on:click={() => {
-  if ($day === 5) {
-    day.set(1)
-  } else {
-    day.update(value => value + 1)
-  }
-}}>next</span><br>
+<NavBar />
 
 {#await fetchTimetable($token) then periods}
-    <table>
-      {#each intervals as interval}
-        <tr>
-          <td>
-            {#if periods[$day][interval].length > 0}
-              {#each periods[$day][interval] as period}
-                {period.subject.name}{' / '}
-              {/each}
-
-              (
-              {#each periods[$day][interval] as period}
-                {period.room}{' / '}
-              {/each}
-              )
-            {:else}
-              -
-             {/if}
-          </td>
-        </tr>
+  {#each intervals as interval}
+    {#if periods[$day][interval].length > 0}
+      {#each periods[$day][interval] as period}
+        <Period {period} />
       {/each}
-  </table>
+    {/if}
+  {/each}
 {/await}
+
+<style scoped>
+	#heading {
+		font-size: 2em;
+		color: var(--black);
+		margin-left: 18px;
+		margin-top: 20px;
+		margin-bottom: 5px;
+		font-weight: 600;
+		font-family: var(--sans-serif);
+	}
+
+  #container {
+    width: 100%;
+    background: var(--white);
+    position: fixed;
+    z-index: 10;
+  }
+
+  #spacing {
+    height: 140px;
+  }
+</style>
