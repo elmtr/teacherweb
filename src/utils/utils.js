@@ -1,3 +1,6 @@
+import {get} from 'svelte/store';
+import {average} from '../stores'
+
 export function findInterval(intervals, time) {
 
   intervals = [
@@ -85,4 +88,17 @@ export let months = {
   "10": "octombrie",
   "11": "noiembrie",
   "12": "decembrie",
+}
+
+export  function calcAverage(marks) {
+  let number = marks.length
+  average.set(0)
+  for (let index in marks) {
+    let mark = marks[index]
+    console.log(mark.value)
+    average.update(value => value + mark.value)
+  }
+
+  average.set(+((get(average) / number).toFixed(2)))
+  return ''
 }

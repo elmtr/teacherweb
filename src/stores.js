@@ -24,6 +24,7 @@ export const grades = writable({});
 
 // core
 export const marks = writable({});
+export const average = writable(0);
 export const draftMarks = writable({});
 export const truancies = writable({});
 
@@ -40,4 +41,5 @@ export const showAddMark = writable(false);
 // draftMark
 export const showAddDraftMark = writable(false);
 export const showModifyDraftMark = writable(false);
+export const showDefinitivateDraftMark = writable(false);
 export const selectedDraftMark = writable({})

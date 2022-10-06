@@ -20,6 +20,8 @@
   import AddMark from '../../kiui/AddMark.svelte'
   import AddDraftMark from '../../kiui/AddDraftMark.svelte'
   import ModifyDraftMark from '../../kiui/ModifyDraftMark.svelte'
+  import DefinitivateDraftMark from '../../kiui/DefinitivateDraftMark.svelte'
+
 
   let student = writable({})
 
@@ -63,6 +65,7 @@
 <AddMark {params} />
 <AddDraftMark {params} />
 <ModifyDraftMark {params} />
+<DefinitivateDraftMark />
 
 <style scoped>
   #heading {

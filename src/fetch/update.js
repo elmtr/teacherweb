@@ -17,7 +17,7 @@ export async function updateIncreasePoints(token, key) {
   )
 }
 
-export async function updateDefinitivateDraftMark(token,subjectKey, studentKey, key) {
+export async function updateDefinitivateDraftMark(token, key) {
   try {
     const {data} = await axios.post(
       `${apiURL}/v1/teacher/draftmarks/definitivate?key=${key}`,
