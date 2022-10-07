@@ -1,10 +1,12 @@
 import {get} from 'svelte/store';
 import {average} from '../stores'
 
-export function findInterval(time) {
+export function findInterval(intervals, time) {
   for (let intervalIndex in intervals) {
     let interval = intervals[intervalIndex]
-    if (time > interval.start && time < interval.end) {
+    console.log(interval)
+    if (time > interval.start && time < interval.end + 0.1) {
+      console.log(interval)
       return interval.number
     }
   }

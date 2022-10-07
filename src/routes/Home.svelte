@@ -29,32 +29,38 @@
 	<!-- getting interval -->
 	{#await fetchSchool($token) then school}
 		{setInterval(school)}
+	
+		<!-- navbar -->
+		<NavBar />
+
+		<div id="greeting">
+			Bună, {$info.firstName}! 👋
+		</div>
+
+		<!-- getting timetable -->
+		{#await fetchTimetable($token) then timetable}
+			{#if timetable[$today]}
+				{#if timetable[$today][$interval]}
+					<CurrentPeriod timetable={timetable} day={$today} interval={$interval}/>
+				{/if}
+				<br>
+				{#if timetable[$today][$interval + 1]}
+					<NextPeriod timetable={timetable} day={$today} interval={$interval + 1} />
+				{/if}
+			{/if}
+
+			<div id="heading">Clasele mele</div>
+
+			<!-- getting grades -->
+			{#if $subjects}
+				{#each Object.keys($grades) as grade}
+					<Grade grade={$grades[grade]} />
+				{/each}
+			{/if}
+		{/await}
+
 	{/await}	
 
-	<!-- navbar -->
-	<NavBar />
-
-	<div id="greeting">
-		Bună, {$info.firstName}! 👋
-	</div>
-
-	<!-- getting timetable -->
-	{#await fetchTimetable($token) then timetable}
-		{#if timetable[$today]}
-			<CurrentPeriod timetable={timetable} day={$today} interval={$interval} />
-			<br>
-			<NextPeriod timetable={timetable} day={$today} interval={$interval + 1} />
-		{/if}
-
-		<div id="heading">Clasele mele</div>
-
-		<!-- getting grades -->
-		{#if $subjects}
-			{#each Object.keys($grades) as grade}
-				<Grade grade={$grades[grade]} />
-			{/each}
-		{/if}
-	{/await}
 
 	
 </main>
