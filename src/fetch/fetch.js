@@ -9,7 +9,7 @@ export async function fetchSchool(token) {
   school.subscribe(value => {
     schoolValue = value
   })
-  if (!schoolValue[1]) {
+  if (!schoolValue.key) {
     const {data} = await axios.get(
       `${apiURL}/v1/teacher/timetable/school`,
       tokenConfig(token),
@@ -17,6 +17,7 @@ export async function fetchSchool(token) {
     schoolValue = data
     school.set(schoolValue)
   }
+
   return schoolValue
 }
 

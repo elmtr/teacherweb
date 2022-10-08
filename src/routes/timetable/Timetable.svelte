@@ -1,7 +1,7 @@
 <script>
   
-  import {token, today} from '../../stores';
-  import {fetchTimetable} from '../../fetch/fetch'
+  import {token, today, school} from '../../stores';
+  import {fetchSchool, fetchTimetable} from '../../fetch/fetch'
   import { writable } from 'svelte/store'
   import { onMount } from 'svelte'
 
@@ -30,14 +30,16 @@
 
 <NavBar />
 
-{#await fetchTimetable($token) then periods}
-  {#each intervals as interval}
-    {#if periods[$day][interval].length > 0}
-      {#each periods[$day][interval] as period}
-        <Period {period} />
-      {/each}
-    {/if}
-  {/each}
+{#await fetchSchool($token) then data}
+  {#await fetchTimetable($token) then periods}
+    {#each intervals as interval}
+      {#if periods[$day][interval].length > 0}
+        {#each periods[$day][interval] as period}
+          <Period {period} />
+        {/each}
+      {/if}
+    {/each}
+  {/await}
 {/await}
 
 <style scoped>
@@ -59,6 +61,6 @@
   }
 
   #spacing {
-    height: 140px;
+    height: 150px;
   }
 </style>
