@@ -37,6 +37,7 @@
 		--gray: #BDBDBD;
 		--black: #303030;
 		--white: white;
+		--offwhite: #F2F2F2;
 		--red: red;
 		--border-radius: 20px;
 		--border: 1.5px solid var(--darkgreen);
@@ -44,5 +45,9 @@
 		--serif: serif;
 		--sans-serif: sans-serif;
 	}
+
+	/* main {
+		background: var(--offwhite);
+	} */
 </style>
 

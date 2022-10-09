@@ -10,7 +10,7 @@
 	import CurrentPeriod from '../kiui/CurrentPeriod.svelte'
 	import NextPeriod from '../kiui/NextPeriod.svelte'
   import Grade from '../kiui/Grade.svelte'
-  import NavBar from '../kiui/ NavBar.svelte'
+  import NavBar from '../kiui/NavBar.svelte'
 	
 	if ($token == "") {
 		push("/login/update")
@@ -73,7 +73,7 @@
 		margin-top: 30px;
 		margin-bottom: 20px;
 		font-weight: 600;
-		font-family: sans-serif;
+		font-family: var(--sans-serif);
 	}
 
 	#heading {
@@ -83,6 +83,6 @@
 		margin-top: 30px;
 		margin-bottom: 5px;
 		font-weight: 600;
-		font-family: sans-serif;
+		font-family: var(--sans-serif);
 	}
 </style>

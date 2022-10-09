@@ -1,6 +1,6 @@
 <script>
   
-  import {token, today, school} from '../../stores';
+  import {token, today} from '../../stores';
   import {fetchSchool, fetchTimetable} from '../../fetch/fetch'
   import { writable } from 'svelte/store'
   import { onMount } from 'svelte'
@@ -8,7 +8,7 @@
   // kiui
   import Days from '../../kiui/Days.svelte'
   import Period from '../../kiui/Period.svelte'
-  import NavBar from '../../kiui/ NavBar.svelte'
+  import NavBar from '../../kiui/NavBar.svelte'
 
   let intervals = [1,2,3,4,5,6,7,8,9,10,11,12]
 
@@ -44,11 +44,11 @@
 
 <style scoped>
 	#heading {
-		font-size: 2em;
+		font-size: 1.8em;
 		color: var(--black);
-		margin-left: 18px;
-		margin-top: 20px;
-		margin-bottom: 5px;
+		margin-left: 25px;
+		margin-top: 30px;
+		margin-bottom: 20px;
 		font-weight: 600;
 		font-family: var(--sans-serif);
 	}
