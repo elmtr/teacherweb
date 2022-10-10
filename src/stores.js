@@ -10,7 +10,7 @@ export const school = writable({});
 // export const today = writable(days[d.getDay()])
 export const today = writable(1)
 // export const now = writable(d.getHours() + 1 + d.getMinutes() / 100)
-export const now = writable(20)
+export const now = writable(8.05)
 
 // authentication and authorization
 export const token = writable("");

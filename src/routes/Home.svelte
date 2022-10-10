@@ -7,8 +7,8 @@
 	import { writable } from 'svelte/store'
 
 	// kiui
-	import CurrentPeriod from '../kiui/CurrentPeriod.svelte'
-	import NextPeriod from '../kiui/NextPeriod.svelte'
+	import CurrentPeriod from '../kiui/Timetable/CurrentPeriod.svelte'
+	import NextPeriod from '../kiui/Timetable/NextPeriod.svelte'
   import Grade from '../kiui/Grade.svelte'
   import NavBar from '../kiui/NavBar.svelte'
 	

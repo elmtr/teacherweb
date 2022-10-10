@@ -6,8 +6,8 @@
   import {token} from '../../stores'
 
   // kiui
-  import InputValue from '../../kiui/InputValue.svelte'
-  import SubmitButton from '../../kiui/SubmitButton.svelte'
+  import InputValue from '../../kiui/Inputs/InputValue.svelte'
+  import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
 
 
   let passcode

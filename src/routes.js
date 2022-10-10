@@ -12,19 +12,9 @@ import Login from './routes/login/Login.svelte'
 import VerifyLoginCode from './routes/login/VerifyCode.svelte'
 import Update from './routes/login/Update.svelte'
 
-// getting
+// dashboard
 import Grade from './routes/teacher/Grade.svelte'
 import Student from './routes/teacher/Student.svelte'
-
-// adding
-import AddMark from './routes/add/AddMark.svelte'
-import AddDraftMark from './routes/add/AddDraftMark.svelte'
-import AddTruancy from './routes/add/AddTruancy.svelte'
-
-// modifying
-import ModifyDraftMark from './routes/add/ModifyDraftMark.svelte'
-import DefinitivateDraftMark from './routes/add/DefinitivateDraftMark.svelte'
-import MotivateTruancy from './routes/add/MotivateTruancy.svelte'
 
 // profile
 import Profile from './routes/profile/Profile.svelte'
@@ -49,14 +39,6 @@ export default {
 
     '/teacher/:gradeKey': Grade,
     '/teacher/:gradeKey/:subjectKey/:studentKey': Student,
-
-    '/teacher/:gradeKey/:subjectKey/:studentKey/add/mark': AddMark,
-    '/teacher/:gradeKey/:subjectKey/:studentKey/add/draftmark': AddDraftMark,
-    '/teacher/:gradeKey/:subjectKey/:studentKey/add/truancy': AddTruancy,
-
-    '/teacher/:gradeKey/:subjectKey/:studentKey/modify/:key': ModifyDraftMark,
-    '/teacher/:gradeKey/:subjectKey/:studentKey/definitivate/:key': DefinitivateDraftMark,
-    '/teacher/:gradeKey/:subjectKey/:studentKey/motivate/:key': MotivateTruancy,
 
     '/profile': Profile,
     '/profile/change-password': ChangePassword,

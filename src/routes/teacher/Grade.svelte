@@ -6,10 +6,9 @@
   import { writable } from 'svelte/store'
 
   // kiui
-  import Subjects from '../../kiui/Subjects.svelte'
+  import Subjects from '../../kiui/Slide/Subjects.svelte'
   import Student from '../../kiui/Student.svelte'
   import HeaderBack from '../../kiui/HeaderBack.svelte'
-    import Grade from '../../kiui/Grade.svelte'
 
   export let params = {}
 

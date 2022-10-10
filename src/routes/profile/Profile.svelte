@@ -1,5 +1,6 @@
 <script>
   import {link} from 'svelte-spa-router'
+  import NavBar from '../../kiui/NavBar.svelte'
   import {info} from '../../stores'
   let profile = $info
 </script>
@@ -39,6 +40,7 @@
     <!-- <a href="/profile/change-password" use:link>schimba parola</a><br>
     <a href="/profile/change-passcode" use:link>schimba codul de acces</a> -->
   {/if}
+  <NavBar />
 </main>
 
 <style scoped>
@@ -84,7 +86,7 @@
     box-shadow: 0 3px 10px var(--gray);
 
     box-sizing: border-box;
-    padding: 20px;
+    padding: 10px 20px;
   }
 
   .section {

@@ -1,27 +1,26 @@
 <script>
   import {writable} from 'svelte/store';
 
-  import {students, token} from '../../stores';
+  import {token} from '../../stores';
 
   import {
     fetchStudents
   } from '../../fetch/fetch'
 
   // kiui
-  import Points from '../../kiui/Points.svelte'
-  import Marks from '../../kiui/Marks.svelte'
-  import DraftMarks from '../../kiui/DraftMarks.svelte'
-  import Truancies from '../../kiui/Truancies.svelte'
+  import Points from '../../kiui/Dashboard/Points.svelte'
+  import Marks from '../../kiui/Dashboard/Marks.svelte'
+  import DraftMarks from '../../kiui/Dashboard/DraftMarks.svelte'
+  import Truancies from '../../kiui/Dashboard/Truancies.svelte'
   import HeaderBack from '../../kiui/HeaderBack.svelte'
   
   // kiui dialog
-  import MotivateTruancy from '../../kiui/MotivateTruancy.svelte'
-  import AddTruancy from '../../kiui/AddTruancy.svelte'
-  import AddMark from '../../kiui/AddMark.svelte'
-  import AddDraftMark from '../../kiui/AddDraftMark.svelte'
-  import ModifyDraftMark from '../../kiui/ModifyDraftMark.svelte'
-  import DefinitivateDraftMark from '../../kiui/DefinitivateDraftMark.svelte'
-
+  import MotivateTruancy from '../../kiui/PopUps/MotivateTruancy.svelte'
+  import AddTruancy from '../../kiui/PopUps/AddTruancy.svelte'
+  import AddMark from '../../kiui/PopUps/AddMark.svelte'
+  import AddDraftMark from '../../kiui/PopUps/AddDraftMark.svelte'
+  import ModifyDraftMark from '../../kiui/PopUps/ModifyDraftMark.svelte'
+  import DefinitivateDraftMark from '../../kiui/PopUps/DefinitivateDraftMark.svelte'
 
   let student = writable({})
 
@@ -37,9 +36,6 @@
 
     return ''
   } 
-
-  console.log($students)
-
 </script>
 
 <HeaderBack />
@@ -51,13 +47,13 @@
   </div>
 {/await}
 
-<Points subjectKey={params.subjectKey} studentKey={params.studentKey} />
+<Points subjectKey={params.subjectKey} studentKey={params.studentKey} mod={true}  />
 
-<DraftMarks subjectKey={params.subjectKey} studentKey={params.studentKey} />
+<DraftMarks subjectKey={params.subjectKey} studentKey={params.studentKey} mod={true} />
 
-<Marks subjectKey={params.subjectKey} studentKey={params.studentKey} />
+<Marks subjectKey={params.subjectKey} studentKey={params.studentKey} mod={true}  />
 
-<Truancies subjectKey={params.subjectKey} studentKey={params.studentKey} />
+<Truancies subjectKey={params.subjectKey} studentKey={params.studentKey} mod={true}  />
 
 <!-- pop-ups -->
 <MotivateTruancy />

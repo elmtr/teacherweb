@@ -5,7 +5,7 @@
   import {push} from 'svelte-spa-router'
   
   // kiui
-  import SubmitButton from '../../kiui/SubmitButton.svelte'
+  import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
 
   let code
 

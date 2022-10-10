@@ -5,9 +5,9 @@
   import {push} from 'svelte-spa-router'
 
   // kiui
-  import InputValue from '../../kiui/InputValue.svelte'
-  import InputPassword from '../../kiui/InputPassword.svelte'
-  import SubmitButton from '../../kiui/InputPassword.svelte'
+  import InputValue from '../../kiui/Inputs/InputValue.svelte'
+  import InputPassword from '../../kiui/Inputs/InputPassword.svelte'
+  import SubmitButton from '../../kiui/Inputs/InputPassword.svelte'
 
   let phone
   let password

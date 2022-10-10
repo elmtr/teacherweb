@@ -7,7 +7,7 @@
   import {onMount} from 'svelte'
     
   // kiui
-  import SubmitButton from '../../kiui/SubmitButton.svelte'
+  import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
 
   let passcode
   let phone

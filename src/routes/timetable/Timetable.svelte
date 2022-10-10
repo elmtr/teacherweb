@@ -6,8 +6,8 @@
   import { onMount } from 'svelte'
 
   // kiui
-  import Days from '../../kiui/Days.svelte'
-  import Period from '../../kiui/Period.svelte'
+  import Days from '../../kiui/Slide/Days.svelte'
+  import Period from '../../kiui/Timetable/Period.svelte'
   import NavBar from '../../kiui/NavBar.svelte'
 
   let intervals = [1,2,3,4,5,6,7,8,9,10,11,12]
