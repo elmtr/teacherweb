@@ -12,5 +12,7 @@
   <br>
   <input name="code" placeholder="code" type="text" bind:value={code}>
 
-  <SubmitButton value="submit" onClick={loginVerifyCode}/>
+  <SubmitButton value="submit" onClick={async () => {
+    await loginVerifyCode(code)
+  }}/>
 </main>
