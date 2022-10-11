@@ -1,34 +1,16 @@
 <script>
-
-  import axios from 'axios'
-  import {tokenConfig, apiURL} from '../../axiosConfig'
-  import {push} from 'svelte-spa-router'
+  import {signupPhone} from '../../fetch/signup'
 
   // kiui
   import InputValue from '../../kiui/Inputs/InputValue.svelte'
   import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
 
-  let phone
-
-  async function submit() {
-    try {
-      const {data} = await axios.post(
-        `${apiURL}/v1/teacher/signup/phone`,
-        {phone},
-        tokenConfig(localStorage.getItem("userToken"))
-      )
-      localStorage.setItem("phone", phone)
-
-      push('/signup/verify-code')
-    } catch(error) {
-      console.log(error.response.data.message)
-    }
-  }
-
+  let phone = ""
 </script>
 
 <main>
-  <InputValue placeholder="phone" bind:value={phone} />
+  <label for="phone"></label>
+  +4 <InputValue placeholder="Numar de telefon" bind:value={phone} />
 
-  <SubmitButton value="submit" onClick={submit} />
+  <SubmitButton value="submit" onClick={signupPhone} />
 </main>

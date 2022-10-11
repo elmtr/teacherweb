@@ -1,38 +1,20 @@
 <script>
-
-  import axios from 'axios'
-  import {config, apiURL} from '../../axiosConfig'
-  import {push} from 'svelte-spa-router'
+  import {signupBasic} from '../../fetch/signup'
 
   // kiui
   import InputValue from '../../kiui/Inputs/InputValue.svelte'
   import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
 
-
-  let firstName
-  let lastName
-
-  async function submit() {
-    try {
-      const {data} = await axios.post(
-        `${apiURL}/v1/teacher/signup/basic`,
-        {firstName, lastName},
-        config
-      )
-      localStorage.setItem('userInfo', JSON.stringify(data.teacher))
-      localStorage.setItem('userToken', data.token)
-      push('/signup/phone')
-    } catch(error) {
-      console.log(error.response.data.message)
-    }
-  }
-
+  let firstName = ""
+  let lastName = ""
 </script>
 
 <main>
   <br>
-  <InputValue placeholder="firstName" bind:value={firstName} />
-  <InputValue placeholder="lastName" bind:value={lastName} />
+  <InputValue placeholder="Nume" bind:value={lastName} />
+  <InputValue placeholder="Prenume" bind:value={firstName} />
 
-  <SubmitButton value="submit" onClick={submit} />
+  <SubmitButton value="submit" onClick={async () => {
+    await signupBasic(firstName, lastName)
+  }} />
 </main>

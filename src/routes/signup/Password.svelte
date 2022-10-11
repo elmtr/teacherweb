@@ -1,34 +1,20 @@
 <script>
-
-  import axios from 'axios'
-  import {tokenConfig, apiURL} from '../../axiosConfig'
-  import {push} from 'svelte-spa-router'
-
+  import { signupPassword } from '../../fetch/signup'
+  
   // kiui
-  import InputValue from '../../kiui/Inputs/InputValue.svelte'
+  import InputPassword from '../../kiui/Inputs/InputPassword.svelte'
   import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
   
-  let password
-
-  async function submit() {
-    try {
-      const {data} = await axios.post(
-        `${apiURL}/v1/teacher/signup/password`,
-        {password},
-        tokenConfig(localStorage.getItem("userToken"))
-      )
-      localStorage.setItem("userInfo", JSON.stringify(data.teacher))
-
-      push('/signup/passcode')
-    } catch(error) {
-      console.log(error.response.data.message)
-    }
-  }
-
+  let password = ""
+  let checkPassword = ""
 </script>
 
 <main>
-  <InputValue placeholder="password" bind:value={password} />
+  <InputPassword placeholder="Parola" bind:value={password} />
 
-  <SubmitButton value="submit" onClick={submit} />
+  <InputPassword placeholder="Verificare parola" bind:value={checkPassword} />
+
+  {#if password === checkPassword && password !== ""}
+    <SubmitButton value="submit" onClick={signupPassword} />
+  {/if}
 </main>
