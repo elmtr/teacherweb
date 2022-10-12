@@ -32,7 +32,7 @@
 			{setInterval(school)}
 		
 			<!-- navbar -->
-			<NavBar />
+			<NavBar location="home" />
 
 			<div id="greeting">
 				Bună, {$info.firstName}! 👋

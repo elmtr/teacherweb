@@ -28,7 +28,7 @@
 </div>
 <div id="spacing"></div>
 
-<NavBar />
+<NavBar location="timetable" />
 
 {#await fetchSchool($token) then data}
   {#await fetchTimetable($token) then periods}

@@ -52,5 +52,5 @@ export async function updateMotivateTruancy(token, key) {
   } catch(error) {
     console.log(error.response)
   }
-} 
+}
 
