@@ -38,7 +38,7 @@
 				Bună, {$info.firstName}! 👋
 			</div>
 
-			<!-- getting timetable -->
+			<!-- getting timetable (for widget) -->
 			{#await fetchTimetable($token) then timetable}
 				{#if timetable[$today]}
 					{#if timetable[$today][$interval]}
