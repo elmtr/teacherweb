@@ -1,9 +1,13 @@
 <script>
+  import { pop } from 'svelte-spa-router'
   import {signupBasic} from '../../fetch/signup'
 
   // kiui
-  import InputValue from '../../kiui/Inputs/InputValue.svelte'
+  import InputText from '../../kiui/Inputs/InputText.svelte'
   import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
+  import SignupNav from '../../kiui/Inputs/SignupNav.svelte'
+  import Next from '../../kiui/Inputs/Next.svelte'
+  import Previous from '../../kiui/Inputs/Previous.svelte'
 
   let firstName = ""
   let lastName = ""
@@ -11,10 +15,13 @@
 
 <main>
   <br>
-  <InputValue placeholder="Nume" bind:value={lastName} />
-  <InputValue placeholder="Prenume" bind:value={firstName} />
+  <InputText preinput="" label="Nume" placeholder="ex. Popescu" bind:value={lastName} />
+  <InputText preinput="" label="Prenume" placeholder="ex. Ion" bind:value={firstName} />
 
-  <SubmitButton value="submit" onClick={async () => {
+  <!-- <SignupNav previous="" next="/signup/phone" /> -->
+  <Next onClick={async () => {
     await signupBasic(firstName, lastName)
   }} />
+
+  <Previous onClick={pop} />
 </main>

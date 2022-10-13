@@ -6,7 +6,7 @@
   import {token} from '../../stores'
 
   // kiui
-  import InputValue from '../../kiui/Inputs/InputValue.svelte'
+  import InputText from '../../kiui/Inputs/InputText.svelte'
   import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
 
 
@@ -31,8 +31,8 @@
 
 <main>
   <br>
-  <InputValue placeholder="passcode" bind:value={passcode} />
-  <InputValue placeholder="newPasscode" bind:value={newPasscode} />
+  <InputText placeholder="passcode" bind:value={passcode} />
+  <InputText placeholder="newPasscode" bind:value={newPasscode} />
 
   <SubmitButton  value="submit" on:click={submit} />
 </main>

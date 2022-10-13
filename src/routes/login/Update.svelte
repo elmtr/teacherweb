@@ -37,26 +37,37 @@
 
   <div id="container">
     <div id="passcode">
-      {#if passcode.length > 0}
-        <div class="digit digit-on"></div>
-      {:else}
-        <div class="digit"></div>
-      {/if}
-      {#if passcode.length > 1}
-        <div class="digit digit-on"></div>
-      {:else}
-        <div class="digit"></div>
-      {/if}
-      {#if passcode.length > 2}
-        <div class="digit digit-on"></div>
-      {:else}
-        <div class="digit"></div>
-      {/if}
-      {#if passcode.length > 3}
-        <div class="digit digit-on"></div>
-      {:else}
-        <div class="digit"></div>
-      {/if}
+      <div class="digit-container">
+        {#if passcode.length > 0}
+          <div class="digit digit-on"></div>
+        {:else}
+          <div class="digit"></div>
+        {/if}
+      </div>
+
+      <div class="digit-container">
+        {#if passcode.length > 1}
+          <div class="digit digit-on"></div>
+        {:else}
+          <div class="digit"></div>
+        {/if}
+      </div>
+
+      <div class="digit-container">
+        {#if passcode.length > 2}
+          <div class="digit digit-on"></div>
+        {:else}
+          <div class="digit"></div>
+        {/if}
+      </div>
+
+      <div class="digit-container">
+        {#if passcode.length > 3}
+          <div class="digit digit-on"></div>
+        {:else}
+          <div class="digit"></div>
+        {/if}
+      </div>
     </div>
   </div><br>
 
@@ -206,9 +217,17 @@
   }
 
   #passcode {
-    width: 40%;
+    width: 20%;
     height: 100%;
-    margin-left: 30%;
+    margin-left: 40%;
+
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .digit-container {
+    flex: 25%;
+    position: relative;
   }
 
   .digit {
@@ -216,8 +235,13 @@
     height: 10px;
     border-radius: 100%;
     border: var(--border);
-    float: left;
-    margin-left: 20px;
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
   
   .digit-on {

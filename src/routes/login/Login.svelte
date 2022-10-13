@@ -3,7 +3,7 @@
   import {login} from '../../fetch/login'
 
   // kiui
-  import InputValue from '../../kiui/Inputs/InputValue.svelte'
+  import InputNumber from '../../kiui/Inputs/InputNumber.svelte'
   import InputPassword from '../../kiui/Inputs/InputPassword.svelte'
   import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
 
@@ -14,8 +14,8 @@
 
 <main>
   <br>
-  <InputValue placeholder="Numarul de telefon" bind:value={phone} />
-  <InputPassword placeholder="Parola" bind:value={password} />
+  <InputNumber preinput="+4" label="Numărul de telefon" placeholder="ex. 0712345678" bind:value={phone} />
+  <InputPassword preinput="" label="Parola" placeholder="ex. 1Motocoasa.Circuit#Triplu23" bind:value={password} />
 
   <SubmitButton value="submit" onClick={async () => {
     await login(phone, password)
