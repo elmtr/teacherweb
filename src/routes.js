@@ -6,6 +6,7 @@ import Phone from './routes/signup/Phone.svelte'
 import VerifyCode from './routes/signup/VerifyCode.svelte'
 import Password from './routes/signup/Password.svelte'
 import Passcode from './routes/signup/Passcode.svelte'
+import CheckPasscode from './routes/signup/CheckPasscode.svelte'
 
 // login
 import Login from './routes/login/Login.svelte'
@@ -32,6 +33,8 @@ export default {
     '/signup/verify-code': VerifyCode,
     '/signup/password': Password,
     '/signup/passcode': Passcode,
+    '/signup/check-passcode': CheckPasscode,
+
     
     '/login': Login,
     '/login/verify-code': VerifyLoginCode,

@@ -12,6 +12,9 @@ export const today = writable(1)
 // export const now = writable(d.getHours() + 1 + d.getMinutes() / 100)
 export const now = writable(8.05)
 
+// signup
+export const passcode = writable("")
+
 // authentication and authorization
 export const token = writable("");
 export const info = writable("");
@@ -27,7 +30,7 @@ export const average = writable(0);
 export const draftMarks = writable({});
 export const truancies = writable({});
 
-// dialog boxes
+// -- dialog boxes
 
 // truancy
 export const showMotivateTruancy = writable(false);

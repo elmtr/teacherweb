@@ -5,7 +5,7 @@
   import {loginUpdate} from '../../fetch/login'
     
   // kiui
-  import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
+  import KeyPad from '../../kiui/Inputs/KeyPad.svelte'
 
   let passcode = ""
   let phone
@@ -17,24 +17,9 @@
     }
   })
 
-  function addDigit(n) {
-    if (passcode.length < 4) {
-      passcode += n
-    }
-  }
-
-  function removeDigit() {
-    passcode = passcode.substr(0, passcode.length - 1)
-  }
-
 </script>
 
 <main>
-
-  <div id="title">
-    
-  </div>
-
   <div id="container">
     <div id="passcode">
       <div class="digit-container">
@@ -73,140 +58,15 @@
 
   <div id="spacing"></div>
 
-  <div class="row">
-    <div class="cell">
-      <div class="key" on:click={() => {addDigit(1)}}>
-        <div>1</div>
-      </div>
-    </div>
-    <div class="cell">
-      <div class="key" on:click={() => {addDigit(2)}}>
-        <div>2</div>
-      </div>
-    </div>
-    <div class="cell">
-      <div class="key" on:click={() => {addDigit(3)}}>
-        <div>3</div>
-      </div>
-    </div>
-  </div> 
-
-  <div class="row">
-    <div class="cell">
-      <div class="key" on:click={() => {addDigit(4)}}>
-        <div>4</div>
-      </div>
-    </div>
-    <div class="cell">
-      <div class="key" on:click={() => {addDigit(5)}}>
-        <div>5</div>
-      </div>
-    </div>
-    <div class="cell">
-      <div class="key" on:click={() => {addDigit(6)}}>
-        <div>6</div>
-      </div>
-    </div>
-  </div> 
-
-  <div class="row">
-    <div class="cell">
-      <div class="key" on:click={() => {addDigit(7)}}>
-        <div>7</div>
-      </div>
-    </div>
-    <div class="cell">
-      <div class="key" on:click={() => {addDigit(8)}}>
-        <div>8</div>
-      </div>
-    </div>
-    <div class="cell">
-      <div class="key" on:click={() => {addDigit(9)}}>
-        <div>9</div>
-      </div>
-    </div>
-  </div> 
-  <div class="row">
-    <div class="cell">
-      <div class="key" style="background: var(--lightgreen);" on:click={() => {removeDigit()}}>
-        <div>
-          <img src="/img/close.png" alt="" style="width: var(" >
-        </div>
-      </div>
-    </div>
-    <div class="cell">
-      <div class="key" on:click={() => {addDigit(1)}}>
-        <div>0</div>
-      </div>
-    </div>
-    <div class="cell">
-      <div class="key" style="background: var(--lightgreen);" on:click={async () => {
-        await loginUpdate(phone, passcode)
-      }}>
-        <div>ok</div>
-      </div>
-    </div>
-  </div> 
-
+  <KeyPad length={4} bind:value={passcode} onClick={async () => {
+    await loginUpdate(phone, passcode)
+  }}/>
 </main>
 
 <style scoped>
   #spacing {
     width: 100%;
     height: 100px;
-  }
-
-  .row {
-    box-sizing: border-box;
-    height: 60px;
-    width: 80%;
-    margin: auto;
-    margin-bottom: 30px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .cell {
-    flex: 33%;
-  }
-
-  .key {
-    margin: auto;
-    background: var(--white);
-    border-radius: 100%;
-    border: var(--border);
-    width: 60px;
-    height: 60px;
-
-    position: relative;
-  }
-
-  .key div {
-    width: 100%;
-    text-align: center;
-    font-family: var(--sans-serif);
-    color: var(--darkgreen);
-
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
-
-  .key div img {
-    width: 30px;
-  }
-
-  #title {
-    width: 100%;
-    height: 20px;
-
-    margin-top: 30px;
-    font-size: 1.5em;
-    font-family: var(--sans-serif);
-    color: var(--darkgreen);
-    text-align: center;
   }
 
   #container {

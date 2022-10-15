@@ -1,14 +1,55 @@
-<script>
-  // kiui
-  import InputText from '../../kiui/Inputs/InputText.svelte'
-  import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
+<script>  
   import { signupVerifyCode } from '../../fetch/signup'
+  import {onMount} from 'svelte'
+  import {push, pop} from 'svelte-spa-router'
+
+  // kiui
+  import Header from '../../kiui/Header.svelte'
+  import Title from '../../kiui/Title.svelte'
+  import KeyPad from '../../kiui/Inputs/KeyPad.svelte'
+  import Code from '../../kiui/Code.svelte'
+  import Previous from '../../kiui/Inputs/Previous.svelte'
+  import Next from '../../kiui/Inputs/Next.svelte'
   
   let code = ""
+  let phone = ""
+
+  let active = false
+
+  onMount(() => {
+    phone = localStorage.getItem("phone")
+    if (!phone) {
+      push("/login")
+    }
+  })
+
+  $: {
+    if (code.length === 6) {
+      active = true
+    } else {
+      active = false
+    }
+  }
 </script>
 
 <main>
-  <InputText placeholder="verify-code" bind:value={code} />
+  <Header />
+  <Title value="Introdu codul de pe SMS" />
 
-  <SubmitButton value="submit" onClick={signupVerifyCode} />
+  <Code value={code} />
+
+  <div id="spacing"></div>
+  <KeyPad bind:value={code} length={6} okButton={false} />
+
+  <Previous onClick={pop} />
+  <Next {active} onClick={async () => {
+    await signupVerifyCode(phone, code)
+  }} />
 </main>
+
+<style scoped>
+  #spacing {
+    height: 100px;
+    width: 100%;
+  }
+</style>

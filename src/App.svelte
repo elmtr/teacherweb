@@ -16,13 +16,13 @@
 			grades.set(sortGrades($info.subjects))
 		}
 
-		// if (!$info) {
-		// 	push("/login")
-		// }
+		if (!$info) {
+			push("/login")
+		}
 		
-		// if (!$token) {
-		// 	push("/login/update")
-		// }
+		if (!$token) {
+			push("/login/update")
+		}
 	})
 	
 </script>
@@ -34,7 +34,9 @@
 <style>
 	:root {
 		--darkgreen: #054D1B;
+		--darkgreen-transparent: rgba(5, 77, 27, 0.6);
 		--lightgreen: #38E377;
+		--lightgreen-transparent: rgba(56, 227, 119, 0.6);
 		--gray: #BDBDBD;
 		--black: #303030;
 		--white: white;

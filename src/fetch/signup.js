@@ -71,7 +71,7 @@ export async function signupPasscode(passcode) {
       {passcode},
       tokenConfig(localStorage.getItem("userToken"))
     )
-    localStorage.setItem("userInfo", JSON.stringify(data.student))
+    localStorage.setItem("userInfo", JSON.stringify(data.teacher))
     localStorage.removeItem("userToken")
 
     push('/')

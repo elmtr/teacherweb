@@ -1,19 +1,33 @@
 <script>
   import {signupPhone} from '../../fetch/signup'
+  import {pop} from 'svelte-spa-router'
 
   // kiui
   import InputText from '../../kiui/Inputs/InputText.svelte'
-  import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
-  import SignupNav from '../../kiui/Inputs/SignupNav.svelte'
+  import Title from '../../kiui/Title.svelte'
+  import Header from '../../kiui/Header.svelte'
+  import Next from '../../kiui/Inputs/Next.svelte'
+  import Previous from '../../kiui/Inputs/Previous.svelte'
 
   let phone = ""
+  let active = false
+  $: {
+    if (phone.length === 10) {
+      active = true
+    } else {
+      active = false
+    }
+  }
 </script>
 
 <main>
-  <label for="phone"></label>
+  <Header />
+  <Title value="Sigur nu ești robot? 🤖" />
   <InputText preinput="+4" label="Numarul de telefon" placeholder="ex. 0712345678" bind:value={phone} />
 
-  <SubmitButton value="submit" onClick={signupPhone} />
+  <Next {active} onClick={async () => {
+    await signupPhone(phone)
+  }} />
 
-  <SignupNav previous="/signup/basic" next="/signup/verify-code" />
+  <Previous onClick={pop} />
 </main>

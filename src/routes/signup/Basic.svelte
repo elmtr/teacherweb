@@ -4,22 +4,31 @@
 
   // kiui
   import InputText from '../../kiui/Inputs/InputText.svelte'
-  import SubmitButton from '../../kiui/Inputs/SubmitButton.svelte'
-  import SignupNav from '../../kiui/Inputs/SignupNav.svelte'
+  import Title from '../../kiui/Title.svelte'
+  import Header from '../../kiui/Header.svelte'
   import Next from '../../kiui/Inputs/Next.svelte'
   import Previous from '../../kiui/Inputs/Previous.svelte'
 
   let firstName = ""
   let lastName = ""
+  let active = false
+  $: {
+    if (lastName !== "" && firstName !== "") {
+      active = true
+    } else {
+      active = false
+    }
+  }
 </script>
 
 <main>
-  <br>
+  <Header />
+  <Title value="Hai să ne cunoaștem!" />
   <InputText preinput="" label="Nume" placeholder="ex. Popescu" bind:value={lastName} />
   <InputText preinput="" label="Prenume" placeholder="ex. Ion" bind:value={firstName} />
 
-  <!-- <SignupNav previous="" next="/signup/phone" /> -->
-  <Next onClick={async () => {
+
+  <Next {active} onClick={async () => {
     await signupBasic(firstName, lastName)
   }} />
 
