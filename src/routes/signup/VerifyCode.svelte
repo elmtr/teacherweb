@@ -8,6 +8,8 @@
   import Title from '../../kiui/Title.svelte'
   import KeyPad from '../../kiui/Inputs/KeyPad.svelte'
   import Code from '../../kiui/Code.svelte'
+  import ErrorMessage from '../../kiui/ErrorMessage.svelte'
+
   import Previous from '../../kiui/Inputs/Previous.svelte'
   import Next from '../../kiui/Inputs/Next.svelte'
   
@@ -19,7 +21,7 @@
   onMount(() => {
     phone = localStorage.getItem("phone")
     if (!phone) {
-      push("/login")
+      push("/signup/basic")
     }
   })
 
@@ -37,6 +39,8 @@
   <Title value="Introdu codul de pe SMS" />
 
   <Code value={code} />
+  <div style="height: 10px;"></div>
+  <ErrorMessage />
 
   <div id="spacing"></div>
   <KeyPad bind:value={code} length={6} okButton={false} />

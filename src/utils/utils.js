@@ -37,7 +37,6 @@ export  function calcAverage(marks) {
   average.set(0)
   for (let index in marks) {
     let mark = marks[index]
-    console.log(mark.value)
     average.update(value => value + mark.value)
   }
 

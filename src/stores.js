@@ -14,6 +14,12 @@ export const now = writable(8.05)
 
 // signup
 export const passcode = writable("")
+export const lastName = writable("")
+export const firstName = writable("")
+
+export const errorMessage = writable("")
+export const warningMessage = writable("")
+
 
 // authentication and authorization
 export const token = writable("");

@@ -1,6 +1,6 @@
 <script>
-  import { pop } from 'svelte-spa-router'
-  import {signupBasic} from '../../fetch/signup'
+  import { pop, push } from 'svelte-spa-router'
+  import {lastName, firstName} from '../../stores'
 
   // kiui
   import InputText from '../../kiui/Inputs/InputText.svelte'
@@ -9,8 +9,6 @@
   import Next from '../../kiui/Inputs/Next.svelte'
   import Previous from '../../kiui/Inputs/Previous.svelte'
 
-  let firstName = ""
-  let lastName = ""
   let active = false
   $: {
     if (lastName !== "" && firstName !== "") {
@@ -24,12 +22,12 @@
 <main>
   <Header />
   <Title value="Hai să ne cunoaștem!" />
-  <InputText preinput="" label="Nume" placeholder="ex. Popescu" bind:value={lastName} />
-  <InputText preinput="" label="Prenume" placeholder="ex. Ion" bind:value={firstName} />
+  <InputText preinput="" label="Nume" placeholder="ex. Popescu" bind:value={$lastName} />
+  <InputText preinput="" label="Prenume" placeholder="ex. Ion" bind:value={$firstName} />
 
 
   <Next {active} onClick={async () => {
-    await signupBasic(firstName, lastName)
+    push('/signup/phone')
   }} />
 
   <Previous onClick={pop} />

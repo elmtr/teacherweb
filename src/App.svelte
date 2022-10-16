@@ -42,6 +42,7 @@
 		--white: white;
 		--offwhite: #F2F2F2;
 		--red: red;
+		--yellow: yellow;
 		--border-radius: 20px;
 		--border: 1.5px solid var(--darkgreen);
 		--width: 93%;

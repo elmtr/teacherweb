@@ -1,19 +1,37 @@
 import axios from "axios"
 import { push } from "svelte-spa-router";
 import { tokenConfig, config, apiURL } from '../axiosConfig';
+import {errorMessage} from '../stores'
 
-export async function signupBasic(firstName, lastName) {
+// export async function signupBasic(firstName, lastName) {
+//   try {
+//     const {data} = await axios.post(
+//       `${apiURL}/v1/teacher/signup/basic`,
+//       {firstName, lastName},
+//       config
+//     )
+//     localStorage.setItem('userInfo', JSON.stringify(data.teacher))
+//     localStorage.setItem('userToken', data.token)
+//     push('/signup/phone')
+//   } catch(error) {
+//     console.log(error.response.data.message)
+//   }
+// }
+
+export async function signupBasic(lastName, firstName, phone) {
   try {
     const {data} = await axios.post(
       `${apiURL}/v1/teacher/signup/basic`,
-      {firstName, lastName},
+      {lastName, firstName, phone},
       config
     )
     localStorage.setItem('userInfo', JSON.stringify(data.teacher))
     localStorage.setItem('userToken', data.token)
-    push('/signup/phone')
+    localStorage.setItem("phone", phone)
+
+    push('/signup/verify-code')
   } catch(error) {
-    console.log(error.response.data.message)
+    errorMessage.set(error.response.data.message)
   }
 }
 
