@@ -1,4 +1,5 @@
 <script>
+  
   import {passcode} from '../../stores'
   import {pop} from 'svelte-spa-router'
   

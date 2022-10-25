@@ -1,4 +1,5 @@
 <script>
+
   import { signupPassword } from '../../fetch/signup'
   import {pop} from 'svelte-spa-router'
   
@@ -6,7 +7,6 @@
   import Header from '../../kiui/Header.svelte'
   import Title from '../../kiui/Title.svelte'
   
-
   import InputPassword from '../../kiui/Inputs/InputPassword.svelte'
   import Previous from '../../kiui/Inputs/Previous.svelte'
   import Next from '../../kiui/Inputs/Next.svelte'
@@ -44,6 +44,7 @@
 
     reqLength = password.length >= 12
   }
+  
 </script>
 
 <main>

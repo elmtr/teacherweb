@@ -25,7 +25,6 @@
   <InputText preinput="" label="Nume" placeholder="ex. Popescu" bind:value={$lastName} />
   <InputText preinput="" label="Prenume" placeholder="ex. Ion" bind:value={$firstName} />
 
-
   <Next {active} onClick={async () => {
     push('/signup/phone')
   }} />

@@ -1,4 +1,5 @@
-<script>  
+<script>
+
   import { signupVerifyCode } from '../../fetch/signup'
   import {onMount} from 'svelte'
   import {push, pop} from 'svelte-spa-router'
@@ -32,6 +33,7 @@
       active = false
     }
   }
+
 </script>
 
 <main>

@@ -36,9 +36,6 @@
       <img src="/img/location-lightgreen.png" alt="">
       <span>Deconectare</span>
     </div> 
-
-    <!-- <a href="/profile/change-password" use:link>schimba parola</a><br>
-    <a href="/profile/change-passcode" use:link>schimba codul de acces</a> -->
   {/if}
   <NavBar location="profile" />
 </main>

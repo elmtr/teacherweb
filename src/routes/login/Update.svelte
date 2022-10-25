@@ -13,7 +13,7 @@
   onMount(() => {
     phone = localStorage.getItem("phone")
     if (phone == null) {
-      push("/login")
+      push("/welcome")
     }
   })
 

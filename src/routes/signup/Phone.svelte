@@ -1,4 +1,5 @@
 <script>
+  
   import {signupBasic} from '../../fetch/signup'
   import {pop} from 'svelte-spa-router'
   import {lastName, firstName, errorMessage} from '../../stores'
@@ -27,6 +28,7 @@
   onMount(() => {
     $errorMessage = ""
   })
+
 </script>
 
 <main>

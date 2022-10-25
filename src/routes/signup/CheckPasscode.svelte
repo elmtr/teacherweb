@@ -1,4 +1,5 @@
 <script>
+  
   import { signupPasscode } from '../../fetch/signup'
   import {pop} from 'svelte-spa-router'
   import {passcode} from '../../stores'

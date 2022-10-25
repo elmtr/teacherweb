@@ -10,7 +10,6 @@
   import Header from '../../kiui/Header.svelte'
   import Title from '../../kiui/Title.svelte'
 
-
   let phone
   let password
 

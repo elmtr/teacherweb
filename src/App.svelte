@@ -16,13 +16,7 @@
 			grades.set(sortGrades($info.subjects))
 		}
 
-		if (!$info) {
-			push("/login")
-		}
-		
-		if (!$token) {
-			push("/login/update")
-		}
+		push('/login/update')
 	})
 	
 </script>
@@ -49,9 +43,5 @@
 		--serif: serif;
 		--sans-serif: sans-serif;
 	}
-
-	/* main {
-		background: var(--offwhite);
-	} */
 </style>
 

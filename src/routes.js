@@ -1,4 +1,6 @@
 import Home from './routes/Home.svelte';
+import Welcome from './routes/Welcome.svelte';
+
 
 // signup
 import Basic from './routes/signup/Basic.svelte'
@@ -35,7 +37,7 @@ export default {
     '/signup/passcode': Passcode,
     '/signup/check-passcode': CheckPasscode,
 
-    
+    '/welcome': Welcome, 
     '/login': Login,
     '/login/verify-code': VerifyLoginCode,
     '/login/update': Update,
