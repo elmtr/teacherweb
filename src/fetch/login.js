@@ -1,8 +1,10 @@
 import axios from "axios"
 import { push } from "svelte-spa-router";
-import { config, tokenConfig, apiURL } from '../axiosConfig';
-import {token, info} from '../stores'
+import { config, tokenConfig, apiURL} from '../axiosConfig';
+import {token, info, subjects, grades} from '../stores'
 import {get} from 'svelte/store'
+
+import {sortSubjects, sortGrades} from '../sort/sort'
 
 export async function login(phone, password) {
   try {

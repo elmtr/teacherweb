@@ -21,8 +21,10 @@ import Student from './routes/teacher/Student.svelte'
 
 // profile
 import Profile from './routes/profile/Profile.svelte'
+import Account from './routes/profile/Account.svelte'
 import ChangePassword from './routes/profile/ChangePassword.svelte'
 import ChangePasscode from './routes/profile/ChangePasscode.svelte'
+import Logout from './routes/profile/Logout.svelte'
 
 // timetable
 import Timetable from './routes/timetable/Timetable.svelte'
@@ -46,8 +48,12 @@ export default {
     '/teacher/:gradeKey/:subjectKey/:studentKey': Student,
 
     '/profile': Profile,
-    '/profile/change-password': ChangePassword,
-    '/profile/change-passcode': ChangePasscode,
+    '/profile/account': Account,
+
+    '/profile/account/change-password': ChangePassword,
+    '/profile/account/change-passcode': ChangePasscode,
+
+    '/profile/logout': Logout,
 
     '/timetable': Timetable,
 };

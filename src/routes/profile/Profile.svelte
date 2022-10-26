@@ -16,26 +16,20 @@
     </div> 
 
     <div id="sections">
-      <div class="section">
-          <img src="/img/location-lightgreen.png" alt="">
-          <span>Contul meu </span>
-      </div>
-
-      <div class="section">
-        <img src="/img/location-lightgreen.png" alt="">
-        <span> Securitate si confidentialitate </span>
-      </div>
-
-      <div class="section">
-        <img src="/img/location-lightgreen.png" alt="">
-        <span>Setarile aplicatiei</span>
-      </div> 
+      <a href="/profile/account" use:link>
+        <div class="section">
+            <img src="/img/location-lightgreen.png" alt="">
+            <span>Contul meu </span>
+        </div>
+      </a>
     </div> 
 
-    <div id="logout">
-      <img src="/img/location-lightgreen.png" alt="">
-      <span>Deconectare</span>
-    </div> 
+    <a href="/profile/logout" use:link>
+      <div id="logout">
+        <img src="/img/location-lightgreen.png" alt="">
+        <span>Deconectare</span>
+      </div>
+    </a>
   {/if}
   <NavBar location="profile" />
 </main>
