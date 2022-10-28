@@ -1,7 +1,7 @@
 import axios from "axios"
 import { push } from "svelte-spa-router";
 import { tokenConfig, config, apiURL } from '../axiosConfig';
-import {errorMessage} from '../stores'
+import {errorMessage, token} from '../stores'
 
 // export async function signupBasic(firstName, lastName) {
 //   try {
@@ -91,6 +91,7 @@ export async function signupPasscode(passcode) {
     )
     localStorage.setItem("userInfo", JSON.stringify(data.teacher))
     localStorage.removeItem("userToken")
+    token.set("")
 
     push('/')
   } catch(error) {

@@ -15,8 +15,13 @@
 			subjects.set(sortSubjects($info.subjects))
 			grades.set(sortGrades($info.subjects))
 		}
-
-		// push('/login/update')
+		
+		if (!$info) {
+			push("/login")
+		}
+		if (!$token) {
+			push("/login/update")
+		}
 	})
 	
 </script>

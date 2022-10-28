@@ -65,7 +65,7 @@
 
 <style scoped>
 	#greeting {
-		font-size: 1.8em;
+		font-size: 1.5em;
 		color: var(--black);
 		margin-left: 25px;
 		margin-top: 30px;
