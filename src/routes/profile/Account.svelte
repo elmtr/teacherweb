@@ -13,14 +13,14 @@
   <a href="/profile/account/change-password" use:link>
     <div class="section">
         <img src="/img/location-lightgreen.png" alt="">
-        <span>Schimba parola</span>
+        <span>Schimbă parola</span>
     </div>
   </a>
 
   <a href="/profile/account/change-passcode" use:link>
     <div class="section">
         <img src="/img/location-lightgreen.png" alt="">
-        <span>Schimba PIN-ul</span>
+        <span>Schimbă PIN-ul</span>
     </div>
   </a>
 </div> 
@@ -43,7 +43,7 @@
     background: var(--white);
     border-radius: var(--border-radius);
 
-    box-shadow: 0 3px 10px var(--gray);
+    box-shadow: 0 1px 5px var(--gray);
 
     box-sizing: border-box;
     padding: 10px 20px;

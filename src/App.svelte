@@ -16,13 +16,15 @@
 			grades.set(sortGrades($info.subjects))
 		}
 
-		push('/login/update')
+		// push('/login/update')
 	})
 	
 </script>
 
 <main>
-	<Router {routes} />
+	<div style="width: var(--container); margin: auto;">
+		<Router {routes} />
+	</div>
 </main>
 
 <style>
@@ -42,6 +44,26 @@
 		--width: 93%;
 		--serif: serif;
 		--sans-serif: sans-serif;
+
+		--container: 100%;
+	}
+
+	@media screen and (min-width: 576px) {
+		:root {
+			--container: 80%;
+		}
+	}
+	
+	@media screen and (min-width: 768px) {
+		:root {
+			--container: 60%;
+		}
+	}
+	
+	@media screen and (min-width: 992px) {
+		:root {
+			--container: 50%;
+		}
 	}
 </style>
 

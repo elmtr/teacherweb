@@ -52,9 +52,9 @@
 
   <Heading title={"Schimba PIN-ul"} />
 
-  <InputPassword preinput="" label="PIN veche" placeholder="parola veche" bind:value={passcode} />
-  <InputPassword preinput="" label="PIN noua" placeholder="ex. 1Motocoasa.Circuit#Triplu23" bind:value={newPasscode} />
-  <InputPassword preinput="" label="Verifica PIN noua" placeholder="ex. 1Motocoasa.Circuit#Triplu23" bind:value={newPasscodeCheck} />
+  <InputPassword preinput="" label="PIN vechi" placeholder="PIN veche" bind:value={passcode} />
+  <InputPassword preinput="" label="PIN nou" placeholder="ex. 1234" bind:value={newPasscode} />
+  <InputPassword preinput="" label="Verifică PIN nou" placeholder="ex. 1234" bind:value={newPasscodeCheck} />
 
   <div id="indications">
     <span id="title">Un PIN ar trebui sa aiba: </span>

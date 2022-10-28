@@ -42,11 +42,11 @@
 			{#await fetchTimetable($token) then timetable}
 				{#if timetable[$today]}
 					{#if timetable[$today][$interval]}
-						<CurrentPeriod timetable={timetable} day={$today} interval={$interval}/>
+						<CurrentPeriod user="teacher" timetable={timetable} day={$today} interval={$interval}/>
 					{/if}
 					<br>
 					{#if timetable[$today][$interval + 1]}
-						<NextPeriod timetable={timetable} day={$today} interval={$interval + 1} />
+						<NextPeriod user="teacher" timetable={timetable} day={$today} interval={$interval + 1} />
 					{/if}
 				{/if}
 

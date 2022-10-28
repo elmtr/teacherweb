@@ -42,6 +42,8 @@
   {/await}
 {/await}
 
+<br><br><br><br><br>
+
 <style scoped>
 	#heading {
 		font-size: 1.8em;
@@ -54,8 +56,8 @@
 	}
 
   #container {
-    width: 100%;
-    background: var(--white);
+    width: var(--container);
+    background: var(--offwhite);
     position: fixed;
     z-index: 10;
   }

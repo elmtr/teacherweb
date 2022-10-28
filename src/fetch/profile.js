@@ -1,5 +1,5 @@
 import axios from "axios"
-import { push } from "svelte-spa-router";
+import { pop } from "svelte-spa-router";
 import { config, tokenConfig, apiURL } from '../axiosConfig';
 import {token, info} from '../stores'
 import {get} from 'svelte/store'
@@ -26,6 +26,7 @@ export async function changePasscode(passcode, newPasscode) {
       tokenConfig(get(token)),
     )
     localStorage.setItem('userInfo', JSON.stringify(data))
+    
     pop()
   } catch(error) {
     console.log(error.response.data.message)

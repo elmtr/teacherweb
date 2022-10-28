@@ -51,7 +51,7 @@
     height: 130px;
 
     border-radius: var(--border-radius);
-    box-shadow: 0 3px 10px var(--gray);
+    box-shadow: 0 1px 5px var(--gray);
 
     box-sizing: border-box;
     padding-top: 20px;
@@ -74,7 +74,7 @@
     background: var(--white);
     border-radius: var(--border-radius);
 
-    box-shadow: 0 3px 10px var(--gray);
+    box-shadow: 0 1px 5px var(--gray);
 
     box-sizing: border-box;
     padding: 10px 20px;
@@ -122,7 +122,7 @@
     margin-top: 20px;
 
     border-radius: var(--border-radius);
-    box-shadow: 0 3px 10px var(--gray);
+    box-shadow: 0 1px 5px var(--gray);
 
     position: relative;
   }

@@ -54,11 +54,11 @@
 
   <HeaderBack />
 
-  <Heading title={"Schimba parola"} />
+  <Heading title={"Schimbă parola"} />
 
   <InputPassword preinput="" label="Parola veche" placeholder="parola veche" bind:value={password} />
-  <InputPassword preinput="" label="Parola noua" placeholder="ex. 1Motocoasa.Circuit#Triplu23" bind:value={newPassword} />
-  <InputPassword preinput="" label="Verifica parola noua" placeholder="ex. 1Motocoasa.Circuit#Triplu23" bind:value={newPasswordCheck} />
+  <InputPassword preinput="" label="Parola nouă" placeholder="ex. 1Motocoasa.Circuit#Triplu23" bind:value={newPassword} />
+  <InputPassword preinput="" label="Verifică parola nouă" placeholder="ex. 1Motocoasa.Circuit#Triplu23" bind:value={newPasswordCheck} />
 
   <div id="indications">
     <span id="title">O parola ar trebui sa aiba: </span>
