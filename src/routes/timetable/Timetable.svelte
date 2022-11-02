@@ -9,6 +9,7 @@
   import Days from '../../kiui/Slide/Days.svelte'
   import Period from '../../kiui/Timetable/Period.svelte'
   import NavBar from '../../kiui/NavBar.svelte'
+  import Heading from '../../kiui/Heading.svelte'
 
   let intervals = [1,2,3,4,5,6,7,8,9,10,11,12]
 
@@ -22,7 +23,7 @@
 </script>
 
 <div id="container">
-  <div id="heading">Orar</div>
+  <Heading title="Orar" />
 
   <Days {day} />
 </div>
@@ -45,16 +46,6 @@
 <br><br><br><br><br>
 
 <style scoped>
-	#heading {
-		font-size: 1.8em;
-		color: var(--black);
-		margin-left: 25px;
-		margin-top: 30px;
-		margin-bottom: 20px;
-		font-weight: 600;
-		font-family: var(--sans-serif);
-	}
-
   #container {
     width: var(--container);
     background: var(--offwhite);
