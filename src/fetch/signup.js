@@ -1,22 +1,8 @@
 import axios from "axios"
 import { push } from "svelte-spa-router";
 import { tokenConfig, config, apiURL } from '../axiosConfig';
-import {errorMessage, token} from '../stores'
-
-// export async function signupBasic(firstName, lastName) {
-//   try {
-//     const {data} = await axios.post(
-//       `${apiURL}/v1/teacher/signup/basic`,
-//       {firstName, lastName},
-//       config
-//     )
-//     localStorage.setItem('userInfo', JSON.stringify(data.teacher))
-//     localStorage.setItem('userToken', data.token)
-//     push('/signup/phone')
-//   } catch(error) {
-//     console.log(error.response.data.message)
-//   }
-// }
+import {errorMessage, token, phoneNumber, info} from '../stores'
+import {get} from 'svelte/store'
 
 export async function signupBasic(lastName, firstName, phone) {
   try {
@@ -25,9 +11,12 @@ export async function signupBasic(lastName, firstName, phone) {
       {lastName, firstName, phone},
       config
     )
-    localStorage.setItem('userInfo', JSON.stringify(data.teacher))
-    localStorage.setItem('userToken', data.token)
-    localStorage.setItem("phone", phone)
+    phoneNumber.set(phone)
+
+    localStorage.setItem('info', JSON.stringify(data.teacher))
+    info.set(data.teacher)
+
+    token.set(data.token)
 
     push('/signup/verify-code')
   } catch(error) {
@@ -35,35 +24,23 @@ export async function signupBasic(lastName, firstName, phone) {
   }
 }
 
-export async function signupPhone(phone) {
+export async function signupVerifyCode(code) {
   try {
-    const {data} = await axios.post(
-      `${apiURL}/v1/teacher/signup/phone`,
-      {phone},
-      tokenConfig(localStorage.getItem("userToken"))
-    )
-    localStorage.setItem("phone", phone)
-
-    push('/signup/verify-code')
-  } catch(error) {
-    console.log(error.response.data.message)
-  }
-}
-
-export async function signupVerifyCode(phone, code) {
-  try {
-    let phone = localStorage.getItem("phone")
+    let phone = get(phoneNumber)
     const {data} = await axios.post(
       `${apiURL}/v1/teacher/signup/verify-code`,
       {phone, code},
-      tokenConfig(localStorage.getItem("userToken"))
+      tokenConfig(get(token))
     )
-    localStorage.setItem("userToken", data.token)
-    localStorage.setItem("userInfo", JSON.stringify(data.teacher))
+
+    localStorage.setItem('info', JSON.stringify(data.teacher))
+    info.set(data.teacher)
+
+    token.set(data.token)
 
     push('/signup/password')
   } catch(error) {
-    console.log(error.response.data.message)
+    errorMessage.set(error.response.data.message)
   }
 }
 
@@ -72,13 +49,15 @@ export async function signupPassword(password) {
     const {data} = await axios.post(
       `${apiURL}/v1/teacher/signup/password`,
       {password},
-      tokenConfig(localStorage.getItem("userToken"))
+      tokenConfig(get(token))
     )
-    localStorage.setItem("userInfo", JSON.stringify(data.teacher))
+
+    localStorage.setItem('info', JSON.stringify(data.teacher))
+    info.set(data.teacher)
 
     push('/signup/passcode')
   } catch(error) {
-    console.log(error.response.data.message)
+    errorMessage.set(error.response.data.message)
   }
 }
 
@@ -87,14 +66,16 @@ export async function signupPasscode(passcode) {
     const {data} = await axios.post(
       `${apiURL}/v1/teacher/signup/passcode`,
       {passcode},
-      tokenConfig(localStorage.getItem("userToken"))
+      tokenConfig(get(token))
     )
-    localStorage.setItem("userInfo", JSON.stringify(data.teacher))
-    localStorage.removeItem("userToken")
-    token.set("")
+    
+    localStorage.setItem('info', JSON.stringify(data.teacher))
+    info.set(data.teacher)
+
+    token.set('')
 
     push('/')
   } catch(error) {
-    console.log(error.response.data.message)
+    errorMessage.set(error.response.data.message)
   }
 }

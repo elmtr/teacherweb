@@ -19,6 +19,8 @@ export const passcode = writable("")
 export const lastName = writable("")
 export const firstName = writable("")
 
+export const phoneNumber = writable("")
+
 export const errorMessage = writable("")
 export const warningMessage = writable("")
 

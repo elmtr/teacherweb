@@ -24,8 +24,6 @@
     } else {
       active = false
     }
-
-    console.log($passcode)
   }
   
 </script>

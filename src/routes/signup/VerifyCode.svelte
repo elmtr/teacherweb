@@ -15,16 +15,8 @@
   import Next from '../../kiui/Inputs/Next.svelte'
   
   let code = ""
-  let phone = ""
 
   let active = false
-
-  onMount(() => {
-    phone = localStorage.getItem("phone")
-    if (!phone) {
-      push("/signup/basic")
-    }
-  })
 
   $: {
     if (code.length === 6) {
@@ -49,7 +41,7 @@
 
   <Previous onClick={pop} />
   <Next {active} onClick={async () => {
-    await signupVerifyCode(phone, code)
+    await signupVerifyCode(code)
   }} />
 </main>
 

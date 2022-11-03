@@ -1,5 +1,10 @@
 <script>
-  import {link} from 'svelte-spa-router'
+  import {push, link} from 'svelte-spa-router'
+  import {info, token} from '../stores'
+
+  if ($info && !$token) {
+    push('/login/update')
+  }
 </script>
 
 <div id="image-banner">

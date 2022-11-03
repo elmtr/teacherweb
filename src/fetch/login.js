@@ -1,7 +1,7 @@
 import axios from "axios"
 import { push } from "svelte-spa-router";
 import { config, tokenConfig, apiURL} from '../axiosConfig';
-import {token, info, subjects, grades, errorMessage} from '../stores'
+import {token, info, subjects, grades, errorMessage, phoneNumber} from '../stores'
 import {get} from 'svelte/store'
 
 import {sortSubjects, sortGrades} from '../sort/sort'
@@ -13,7 +13,7 @@ export async function login(phone, password) {
       {phone, password},
       config
     )
-    localStorage.setItem('phone', phone)
+    phoneNumber.set(phone)
 
     push('/login/verify-code')
   } catch(error) {
@@ -23,15 +23,15 @@ export async function login(phone, password) {
 
 export async function loginVerifyCode(code) {
   try {
-    let phone = localStorage.getItem('phone')
+    let phone = get(phoneNumber)
     const {data} = await axios.post(
       `${apiURL}/v1/teacher/login/verify-code`,
       {phone, code},
       config
     )
-    localStorage.setItem('userInfo', JSON.stringify(data.teacher))
+    localStorage.setItem('info', JSON.stringify(data.teacher))
 
-		info.set(JSON.parse(localStorage.getItem('userInfo')))
+		info.set(data.teacher)
     subjects.set(sortSubjects(get(info).subjects))
     grades.set(sortGrades(get(info).subjects))
 
@@ -46,9 +46,9 @@ export async function loginUpdate(phone, passcode) {
     const {data} = await axios.post(
       `${apiURL}/v1/teacher/login/update`,
       {phone, passcode},
-      tokenConfig(localStorage.getItem("userToken"))
     )
-    localStorage.setItem("userInfo", JSON.stringify(data.teacher))
+    localStorage.setItem('info', JSON.stringify(data.teacher))
+
     token.set(data.token)
     info.set(data.teacher)
 
