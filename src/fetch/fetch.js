@@ -47,6 +47,16 @@ export async function fetchStudents(token, gradeKey) {
       `${apiURL}/v1/teacher/students?gradeKey=${gradeKey}`,
       tokenConfig(token),
     )
+
+    data.sort((a, b) => {
+      if (a.lastName + "" + a.firstName < b.lastName + "" + b.firstName) {
+        return -1;
+      }
+      if (a.lastName + "" + a.firstName > b.lastName + "" + b.firstName) {
+        return 1;
+      }
+      return 0;
+    })
     studentsValue[gradeKey] = data
     students.set(studentsValue)
   }
