@@ -21,7 +21,7 @@
 
 <a href="/login" use:link>
   <div id="next">
-    <img src="/img/right-lightgreen.png" alt="">
+    <img src="/img/right.svg" alt="">
   </div>
 </a>
 
@@ -65,6 +65,7 @@
   #next img {
     width: 80%;
     height: 80%;
+    filter: var(--lightgreen-filter);
 
     margin: 0;
     position: absolute;
