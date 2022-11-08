@@ -9,7 +9,7 @@ export const timetable = writable({});
 export const school = writable({});
 
 export const today = writable(days[d.getDay()])
-// export const today = writable(1)
+// export const today = writable(5)
 
 export const now = writable(d.getHours() + 1 + d.getMinutes() / 100)
 // export const now = writable(8.05)
@@ -21,6 +21,7 @@ export const firstName = writable("")
 
 export const phoneNumber = writable("")
 
+export const loading = writable(false)
 export const errorMessage = writable("")
 export const warningMessage = writable("")
 
