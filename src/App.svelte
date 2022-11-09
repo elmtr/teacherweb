@@ -16,7 +16,7 @@
 			grades.set(sortGrades($info.subjects))
 		}
 		
-		// push('/welcome')
+		push('/welcome')
 	})
 	
 </script>
