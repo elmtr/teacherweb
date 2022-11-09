@@ -4,7 +4,7 @@
 	import {push, link} from 'svelte-spa-router'
 	import {fetchSchool, fetchTimetable} from '../fetch/fetch'
 	import { findInterval } from '../utils/utils'
-	import { writable } from 'svelte/store'
+	import { writable, get } from 'svelte/store'
 
 	// kiui
 	import CurrentPeriod from '../kiui/Timetable/CurrentPeriod.svelte'
@@ -18,10 +18,23 @@
 	}
 
 	let interval = writable(1)
+	let gradesIndeces = []
 
 	function setInterval(school) {
 		interval.set(findInterval(school.intervals, $now))
 		return ''
+	}
+
+	$: {
+		gradesIndeces = Object.keys(get(grades))
+		gradesIndeces.sort((a, b) => {
+			if (a > b) {
+				return -1
+			}
+			if (a < b) {
+				return 1
+			}
+		})
 	}
 
 </script>
@@ -51,7 +64,7 @@
 
 				<!-- getting grades -->
 				{#if $subjects}
-					{#each Object.keys($grades) as grade}
+					{#each gradesIndeces as grade}
 						<Grade grade={$grades[grade]} />
 					{/each}
 				{/if}

@@ -34,9 +34,15 @@
 <Loading />
 
 {#await fetchStudents($token, params.gradeKey) then students}
-  {#each students as student}
-    <Student gradeKey={params.gradeKey} {currentSubject} {student} />
-  {/each}
+  {#if students.length > 0}
+    {#each students as student}
+      <Student gradeKey={params.gradeKey} {currentSubject} {student} />
+    {/each}
+  {:else}
+    <div id="no-students">
+      <span>Nu sunt elevi în clasă</span>
+    </div>
+  {/if}
 {/await}
 
 <style scoped>
@@ -49,4 +55,12 @@
 		font-weight: 600;
 		font-family: var(--sans-serif);
 	}
+
+  #no-students {
+    width: 100%;
+    text-align: center;
+    margin-top: 30vh;
+    font-family: var(--sans-serif);
+    color: var(--darkgreen);
+  }
 </style>
