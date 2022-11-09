@@ -10,6 +10,8 @@
   import Heading from '../../kiui/Heading.svelte'
   import ErrorMessage from '../../kiui/ErrorMessage.svelte'
   import Loader from '../../kiui/PopUps/Loader.svelte'
+  import Loading from '../../kiui/Loading.svelte'
+
 
   let passcode = ""
 
@@ -20,7 +22,7 @@
 </script>
 
 <main>
-  <Loader />
+  <!-- <Loader /> -->
   <Heading title="Bună, {$info.firstName} 👋" />
   <div id="container">
     <div id="passcode">
@@ -57,9 +59,10 @@
       </div>
     </div>
 
-    <div id="error-container">
+    <div class="element-container">
       <ErrorMessage />
     </div>
+    <Loading />
   </div><br>
 
   <div id="spacing"></div>
@@ -81,10 +84,11 @@
     bottom: 0;
   }
 
-  #error-container {
+  .element-container {
     width: 100%;
     text-align: center;
-    margin-top: 20px;
+    box-sizing: border-box;
+    margin-top: 10px;
   }
 
   #spacing {
