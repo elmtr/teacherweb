@@ -9,7 +9,7 @@
   import Subjects from '../../kiui/Slide/Subjects.svelte'
   import Student from '../../kiui/Student.svelte'
   import HeaderBack from '../../kiui/HeaderBack.svelte'
-  import Loading from '../../kiui/Loading.svelte'
+  import Loader from '../../kiui/Loader.svelte'
 
   export let params = {}
 
@@ -29,9 +29,9 @@
   </div>
 {/if}
 
-<Subjects subjects={$subjects} gradeKey={params.gradeKey} {currentSubject} />
+<Loader />
 
-<Loading />
+<Subjects subjects={$subjects} gradeKey={params.gradeKey} {currentSubject} />
 
 {#await fetchStudents($token, params.gradeKey) then students}
   {#if students.length > 0}

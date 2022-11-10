@@ -13,7 +13,7 @@
   import DraftMarks from '../../kiui/Dashboard/DraftMarks.svelte'
   import Truancies from '../../kiui/Dashboard/Truancies.svelte'
   import HeaderBack from '../../kiui/HeaderBack.svelte'
-  import Loading from '../../kiui/Loading.svelte'
+  import Loader from '../../kiui/Loader.svelte'
   
   // kiui dialog
   import MotivateTruancy from '../../kiui/PopUps/MotivateTruancy.svelte'
@@ -48,7 +48,7 @@
   </div>
 {/await}
 
-<Loading />
+<Loader />
 
 <Points subjectKey={params.subjectKey} studentKey={params.studentKey} mod={true}  />
 
