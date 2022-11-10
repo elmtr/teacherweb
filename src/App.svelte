@@ -7,6 +7,10 @@
 	import {onMount} from 'svelte';
   import { sortGrades, sortSubjects } from './sort/sort'
 
+	let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+
 	onMount(() => {
 		token.set(localStorage.getItem('token'))
 		info.set(JSON.parse(localStorage.getItem('info')))
@@ -22,6 +26,12 @@
 </script>
 
 <main>
+	{#if !mobile}
+		<div id="block">
+			<div>:((( 
+			<br><br> din păcate, va trebui sa folosești un telefon</div>
+		</div>
+	{/if}
 	<div style="width: var(--container); margin: auto;">
 		<Router {routes} />
 	</div>
@@ -67,6 +77,26 @@
 		:root {
 			--container: 50%;
 		}
+	}
+
+	#block {
+		z-index: 10;
+		background: var(--offwhite);
+		height: 100vh;
+		width: 100vw;
+		position: fixed;
+		top: 0;
+	}
+
+	#block div {
+		width: 50%;
+		position: relative;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: var(--darkgreen);
+		font-family: var(--sans-serif);
+		text-align: center;
 	}
 </style>
 
