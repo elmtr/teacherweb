@@ -3,7 +3,7 @@
 	import Router, { push } from 'svelte-spa-router';
 	import routes from './routes';
 
-	import {token, info, subjects, grades, draftMarks,  marks} from './stores';
+	import {token, info, subjects, grades, now} from './stores';
 	import {onMount} from 'svelte';
   import { sortGrades, sortSubjects } from './sort/sort'
 
@@ -23,6 +23,12 @@
 		push('/welcome')
 	})
 	
+		// updating time
+	function updateTime() { 
+		let d = new Date()
+		$now = (d.getHours() + d.getMinutes() / 100).toFixed(2)
+	}
+	setInterval(updateTime, 60000)
 </script>
 
 <main>
