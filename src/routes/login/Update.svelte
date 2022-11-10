@@ -3,7 +3,7 @@
   import {push} from 'svelte-spa-router'
   import {onMount} from 'svelte'
   import {loginUpdate} from '../../fetch/login'
-  import {info, errorMessage} from '../../stores'
+  import {info, loading, errorMessage} from '../../stores'
     
   // kiui
   import KeyPad from '../../kiui/Inputs/KeyPad.svelte'
@@ -16,6 +16,7 @@
   let passcode = ""
 
   onMount(() => {
+    $loading = false
     $errorMessage = ""
   })
 
@@ -71,7 +72,7 @@
     <KeyPad length={4} bind:value={passcode} onClick={async () => {
       await loginUpdate($info.phone, passcode)
       passcode = ""
-    }}/>
+    }} />
   </div>
 </main>
 

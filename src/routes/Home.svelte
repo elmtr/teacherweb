@@ -11,7 +11,7 @@
 	import NextPeriod from '../kiui/Timetable/NextPeriod.svelte'
   import Grade from '../kiui/Grade.svelte'
   import NavBar from '../kiui/NavBar.svelte'
-	import Loading from '../kiui/Loading.svelte'
+	import Loader from '../kiui/PopUps/Loader.svelte'
 	
 	if ($token == "") {
 		push("/login/update")
@@ -40,6 +40,7 @@
 </script>
 
 <main>
+	<Loader />
 	{#if $token}
 		<!-- getting interval -->
 		{#await fetchSchool($token) then school}
@@ -71,7 +72,6 @@
 			{/await}
 		{/await}	
 	{/if}
-	<Loading />
 </main>
 
 <style scoped>
