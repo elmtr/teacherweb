@@ -3,7 +3,7 @@
   import {info, token} from '../stores'
 
   if ($info && !$token) {
-    push('/login/update')
+    push('/')
   }
 </script>
 

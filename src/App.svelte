@@ -3,10 +3,11 @@
 	import Router, { push } from 'svelte-spa-router';
 	import routes from './routes';
 
-	import {token, info, subjects, grades, now, interval, school} from './stores';
+	import {token, info, subjects, grades, now, interval, school, showUpdate} from './stores';
 	import {onMount} from 'svelte';
   import { sortGrades, sortSubjects } from './sort/sort'
   import { findInterval } from './utils/utils'
+	import Update from './kiui/PopUps/Update.svelte'
 
 	let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
@@ -24,16 +25,20 @@
 		push('/welcome')
 	})
 	
-		// updating time
-	function updateTime() { 
+	// updating time
+	setInterval(() => {
 		let d = new Date()
 		$now = (d.getHours() + d.getMinutes() / 100).toFixed(2)
 
 		if ($school) {
 			$interval = findInterval($school.intervals, $now)
 		}
-	}
-	setInterval(updateTime, 5000)
+	}, 5000)
+
+	// showing login update
+	setInterval(() => {
+		$showUpdate = true
+	}, 3 * 60 * 1000) // 3 minutes in ms
 </script>
 
 <main>
@@ -43,6 +48,11 @@
 			<br><br> din păcate, va trebui sa folosești un telefon</div>
 		</div>
 	{/if}
+	{#if $info && !$token}
+		<Update />
+	{/if}
+
+	<!-- <Update /> -->
 	<div style="width: var(--container); margin: auto;">
 		<Router {routes} />
 	</div>
