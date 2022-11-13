@@ -13,7 +13,6 @@ import CheckPasscode from './routes/signup/CheckPasscode.svelte'
 // login
 import Login from './routes/login/Login.svelte'
 import VerifyLoginCode from './routes/login/VerifyCode.svelte'
-import Update from './routes/login/Update.svelte'
 
 // dashboard
 import Grade from './routes/teacher/Grade.svelte'
@@ -42,7 +41,6 @@ export default {
     '/welcome': Welcome, 
     '/login': Login,
     '/login/verify-code': VerifyLoginCode,
-    '/login/update': Update,
 
     '/teacher/:gradeKey': Grade,
     '/teacher/:gradeKey/:subjectKey/:studentKey': Student,

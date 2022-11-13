@@ -1,7 +1,7 @@
 import axios from "axios"
 import { push } from "svelte-spa-router";
 import { config, tokenConfig, apiURL} from '../axiosConfig';
-import {token, info, subjects, grades, errorMessage, phoneNumber, loading} from '../stores'
+import {token, info, subjects, grades, errorMessage, phoneNumber, loading, showUpdate} from '../stores'
 import {get} from 'svelte/store'
 
 import {sortSubjects, sortGrades} from '../sort/sort'
@@ -55,6 +55,7 @@ export async function loginUpdate(phone, passcode) {
       {phone, passcode},
     )
     loading.set(false)
+    showUpdate.set(false)
     localStorage.setItem('info', JSON.stringify(data.teacher))
 
     token.set(data.token)
