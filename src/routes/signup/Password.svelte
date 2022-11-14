@@ -37,10 +37,10 @@
     const digits = [0,1,2,3,4,5,6,7,8,9]
     reqDigit = digits.some(digit => password.includes(digit))
 
-    const specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '.', '-', '_', '+', '=']
-    reqSpecialChar = specialChars.some(char => password.includes(char))
+    // const specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '.', '-', '_', '+', '=']
+    // reqSpecialChar = specialChars.some(char => password.includes(char))
 
-    reqLength = password.length >= 12
+    reqLength = password.length >= 8
   }
   
 </script>
@@ -52,7 +52,7 @@
   <InputPassword 
     preinput="" 
     label="Parola" 
-    placeholder="ex. 1Motocoasa.Circuit#Triplu23" 
+    placeholder="ex. 1MotocoasaCircuitTriplu23" 
     bind:value={password} 
   />
   <InputPassword 
@@ -68,7 +68,7 @@
     <div class="requirement">
       {#if reqLength}
         <div class="req-status req-done">
-          <img src="/img/done.svg" alt="">
+          <img src="/img/done.svg" style="filter: var(--lightgreen-filter)" alt="">
         </div>
       {:else}
         <div class="req-status">
@@ -76,13 +76,13 @@
         </div>
       {/if}
       <div class="req-text">
-        Cel putin 12 caractere
+        Cel putin 8 caractere
       </div>
     </div>
     <div class="requirement">
       {#if reqDigit}
         <div class="req-status req-done">
-          <img src="/img/done.svg" alt="">
+          <img src="/img/done.svg" style="filter: var(--lightgreen-filter)" alt="">
         </div>
       {:else}
         <div class="req-status">
@@ -95,7 +95,7 @@
       </div>
     </div>
 
-    <div class="requirement">
+    <!-- <div class="requirement">
       {#if reqSpecialChar}
         <div class="req-status req-done">
           <img src="/img/done.svg" alt="">
@@ -109,7 +109,7 @@
         Cel putin un caracter special <br>
         (ex. !@#$%^&*.-_+=)
       </div>
-    </div>
+    </div> -->
   </div>
 
   <Previous onClick={pop} />
