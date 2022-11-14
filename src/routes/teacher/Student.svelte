@@ -44,7 +44,7 @@
 {#await fetchStudents($token, params.gradeKey) then students}
   {selectStudent(students)}
   <div id="heading">
-    {$student.firstName} {$student.lastName}
+    {$student.lastName} {$student.firstName}
   </div>
 {/await}
 
