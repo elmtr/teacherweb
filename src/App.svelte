@@ -44,6 +44,7 @@
 
 		if (diff >= 0.02) {
 			$showUpdate = true
+			$token = false
 		}
 
 		if ($school) {
@@ -60,7 +61,7 @@
 		</div>
 	{/if}
 
-	{#if $info}
+	{#if $info && !$token}
 		<Update />
 	{/if}
 

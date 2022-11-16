@@ -40,7 +40,7 @@ export async function loginVerifyCode(code) {
     subjects.set(sortSubjects(get(info).subjects))
     grades.set(sortGrades(get(info).subjects))
 
-    push('/login/update')
+    push('/')
   } catch(error) {
     errorMessage.set(error.response.data.message)
     loading.set(false)
